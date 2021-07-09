@@ -1,0 +1,30 @@
+{
+  "name": "green",
+  "description": "그린에너지",
+  "version": "0.0.1",
+  "author": "",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "browser-sync": "^2.26.5",
+    "css-mqpacker": "^7.0.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-if-else": "^1.0.3",
+    "gulp-pug": "^4.0.1",
+    "gulp-remove-empty-lines": "^0.1.0",
+    "gulp-remove-sourcemaps": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-sourcemaps": "^2.6.5",
+    "susy": "^3.0.5"
+  }
+}

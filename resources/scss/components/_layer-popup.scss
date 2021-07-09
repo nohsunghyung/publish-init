@@ -1,0 +1,36 @@
+.layer-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.7);
+  .popup-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+  .cell {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .popup-container {
+    margin: 0 auto;
+    &.w-400 {
+      max-width: 400px;
+    }
+  }
+  .popup-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    background-color: #fff;
+  }
+}

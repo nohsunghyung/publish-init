@@ -1,0 +1,120 @@
+$input-cover-height: 48px;
+
+// input
+.input-cover {
+  position: relative;
+  height: $input-cover-height;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  @include box-sizing();
+  input {
+    width: 100%;
+    height: 22px;
+    line-height: 22px;
+    border: 0;
+    font-size: 13px;
+    background-color: transparent;
+    @include placeholder(#979797);
+  }
+}
+
+// radio,checkbox
+.selector-wrapper {
+  .selector-cover {
+    + .selector-cover {
+      margin-top: 10px;
+    }
+  }
+  &.horizontal {
+    @include cf;
+    .selector-cover {
+      float: left;
+      + .selector-cover {
+        margin-top: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+.selector-cover {
+  input {
+    @include blind();
+    + label {
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+  }
+  label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+  }
+  // 라디오
+  &.radio {
+    label {
+      min-height: 20px;
+      line-height: 20px;
+      padding-left: 22px;
+      background-image: url('../images/components/icon-radio-off.png');
+      background-size: 20px 20px;
+    }
+    input:checked + label {
+      background-image: url('../images/components/icon-radio-on.png');
+    }
+  }
+  // 체크박스
+  &.checkbox {
+    label {
+      min-height: 20px;
+      line-height: 20px;
+      padding-left: 22px;
+      background-image: url('../images/components/icon-checkbox-off.png');
+      background-size: 20px 20px;
+    }
+    input:checked + label {
+      background-image: url('../images/components/icon-checkbox-on.png');
+    }
+  }
+}
+
+// 셀렉트박스
+.select-box {
+  position: relative;
+  select {
+    width: 100%;
+    padding: 13px 24px 13px 11px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    @include box-sizing();
+    option {
+      font-size: 15px;
+      color: #000;
+      background-color: #fff;
+    }
+    &.selected {
+      background-color: #000;
+      border-color: #000;
+      color: #fff;
+      + .arrow {
+        transform: rotate(180deg);
+        background-image: url('../images/components/icon-select-arrow-w.png');
+      }
+    }
+  }
+  .arrow {
+    display: block;
+    width: 10px;
+    height: 7px;
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    margin-top: -3px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: url('../images/components/icon-select-arrow-bk.png');
+    background-size: 10px 7px;
+  }
+}

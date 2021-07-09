@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content_old="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, maximum-scale=1.0"
+    />
+    <link rel="icon" href="../../resources/images/favicon.ico" />
+    <link rel="stylesheet" href="../../resources/css/style.css" />
+    <link rel="stylesheet" href="../../resources/plugins/slick.css" />
+    <script src="../../resources/plugins/jquery-2.2.4.min.js"></script>
+    <script src="../../resources/plugins/slick.js"></script>
+    <script src="../../resources/js/common.js"></script>
+    <title>제목</title>
+  </head>
+  <style>
+    .btn-open {
+      display: block;
+      margin: 20px;
+      border-bottom: 1px solid #ddd;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+
+  <body>
+    <div id="container">
+      <button type="button" class="btn-open" onclick="openLayerPopup('layerPopup')">1.기본팝업(click)</button>
+    </div>
+
+    <div class="layer-popup" id="layerPopup">
+      <div class="popup-wrapper">
+        <div class="cell">
+          <div class="popup-container w-400">
+            <div class="popup-content">
+              <div class="popup-header">
+                <h2 class="popup-title">제목</h2>
+                <button type="button" class="btn-close">닫기</button>
+              </div>
+              <div class="popup-body">
+                내용내용내용내용내용내용내내용내용내용내용내용내용내<br /><br /><br />내용내용내용내용내용내용내내용내용내용내용내용내용내<br /><br /><br /><br /><br /><br /><br /><br /><br />용내용내용내용내용내용내용내용내용내용내
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

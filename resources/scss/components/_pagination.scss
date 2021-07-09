@@ -1,0 +1,37 @@
+.pagination {
+  display: table;
+  margin: 0 auto;
+  @include cf;
+  button {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+  }
+  .paging {
+    margin: 0 3px;
+    border-radius: 50%;
+    &.current {
+      background-color: #ffcc13;
+      color: #fff;
+    }
+  }
+  .controller {
+    margin: 0 3px;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &.prev-10 {
+      background-image: url('../images/components/icon-pagination-prev-10.png');
+    }
+    &.prev {
+      background-image: url('../images/components/icon-pagination-prev.png');
+    }
+    &.next {
+      background-image: url('../images/components/icon-pagination-next.png');
+    }
+    &.next-10 {
+      background-image: url('../images/components/icon-pagination-next-10.png');
+    }
+  }
+}

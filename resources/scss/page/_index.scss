@@ -1,0 +1,11 @@
+// scss
+html,
+body {
+  &.scroll-disable {
+    overflow: hidden;
+  }
+}
+
+#header {
+  background-color: #f1f1f1;
+}

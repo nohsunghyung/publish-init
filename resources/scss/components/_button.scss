@@ -1,0 +1,40 @@
+// buttons
+.btn {
+  border: 1px solid #ddd;
+  &.small {
+    padding: 3px 10px;
+    font-size: 13px;
+  }
+  &.medium {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  &.normal {
+    background-color: transparent;
+  }
+  &.slightly {
+    background-color: #ddd;
+    border-color: #ddd;
+    color: #000;
+  }
+  &.primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
+  &.dark {
+    background-color: #222;
+    border-color: #222;
+    color: #fff;
+  }
+  &.danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+  }
+  &.warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #fff;
+  }
+}
