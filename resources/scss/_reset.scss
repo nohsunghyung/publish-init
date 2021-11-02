@@ -31,7 +31,7 @@ button,
 select,
 pre {
   -webkit-text-size-adjust: none;
-  font-size: $base-font-size;
+  // font-size: $base-font-size;
   letter-spacing: -0.03em;
   line-height: $line-height;
   font-weight: 400;
@@ -68,6 +68,10 @@ textarea {
   margin: 0px;
   padding: 0px;
   list-style: none;
+}
+
+input {
+  -webkit-border-radius: 0;
 }
 
 address,

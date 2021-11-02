@@ -5,11 +5,11 @@
   button {
     display: block;
     float: left;
-    width: 30px;
-    height: 30px;
+    width: rem(30px);
+    height: rem(30px);
   }
   .paging {
-    margin: 0 3px;
+    margin: 0 rem(3px);
     border-radius: 50%;
     &.current {
       background-color: #ffcc13;
@@ -17,7 +17,7 @@
     }
   }
   .controller {
-    margin: 0 3px;
+    margin: 0 rem(3px);
     text-indent: -9999px;
     background-repeat: no-repeat;
     background-size: cover;

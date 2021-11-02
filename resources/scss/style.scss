@@ -31,5 +31,11 @@
 // reset
 @import './reset';
 
-// 페이지 scss
-@import './page/index.scss';
+// 공통 scss
+@import './page/common.scss';
+
+// 메인 scss
+@import './page/main.scss';
+
+// 서브 scss
+@import './page/sub.scss';

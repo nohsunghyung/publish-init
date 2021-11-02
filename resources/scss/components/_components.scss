@@ -1,20 +1,95 @@
-$input-cover-height: 48px;
+// typo
+.font {
+  &.warning {
+    color: $warning;
+  }
+  &.slightly {
+    color: $slightly;
+  }
+  &.primary {
+    color: $primary;
+  }
+  &.danger {
+    color: $danger;
+  }
+}
+
+$input-cover-height: rem(48px);
 
 // input
 .input-cover {
-  position: relative;
-  height: $input-cover-height;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  @include box-sizing();
+  &.float {
+    position: relative;
+    @include box-sizing();
+    &.active {
+      label {
+        transform: translate3d(0, -27px, 0) scale(0.8);
+      }
+    }
+    &.focus {
+      border-color: $primary;
+      label {
+        color: $primary;
+      }
+      input {
+        border-color: $primary;
+        color: $primary;
+      }
+    }
+    label {
+      position: absolute;
+      top: rem(7px);
+      left: 0;
+      right: 0;
+      z-index: 1;
+      width: 100%;
+      transform: translate3d(0, 0, 0) scale(1);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform-origin: left top;
+      font-size: rem(16px);
+      color: #666;
+      @include ellipsis;
+    }
+  }
   input {
+    display: block;
+    position: relative;
+    z-index: 2;
     width: 100%;
-    height: 22px;
-    line-height: 22px;
+    min-height: rem(30px);
+    line-height: rem(26px);
     border: 0;
-    font-size: 13px;
+    padding-top: rem(10px);
+    padding-bottom: rem(11px);
+    border-bottom: 1px solid #dedede;
+    border-radius: 0;
+    font-weight: 300;
+    font-size: rem(18px);
     background-color: transparent;
     @include placeholder(#979797);
+    &:read-only,
+    &:disabled {
+      color: #999 !important;
+      &.datepicker-input {
+        color: #000 !important;
+      }
+    }
+    @media (max-width: $mo-l) {
+      font-size: 16px;
+    }
+  }
+  label {
+    font-size: rem(16px);
+    color: #666;
+  }
+  .required {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: rem(2px);
+    margin-left: rem(5px);
+    font-weight: 700;
+    font-size: rem(16px);
+    color: $primary;
   }
 }
 
@@ -22,7 +97,7 @@ $input-cover-height: 48px;
 .selector-wrapper {
   .selector-cover {
     + .selector-cover {
-      margin-top: 10px;
+      margin-top: rem(10px);
     }
   }
   &.horizontal {
@@ -31,13 +106,15 @@ $input-cover-height: 48px;
       float: left;
       + .selector-cover {
         margin-top: 0;
-        margin-left: 10px;
+        margin-left: rem(10px);
       }
     }
   }
 }
 .selector-cover {
+  line-height: 1;
   input {
+    cursor: pointer;
     @include blind();
     + label {
       background-repeat: no-repeat;
@@ -47,16 +124,17 @@ $input-cover-height: 48px;
   label {
     display: inline-block;
     vertical-align: middle;
-    font-size: 14px;
+    font-size: rem(14px);
+    cursor: pointer;
   }
   // 라디오
   &.radio {
     label {
-      min-height: 20px;
-      line-height: 20px;
-      padding-left: 22px;
+      min-height: rem(20px);
+      line-height: rem(20px);
+      padding-left: rem(26px);
       background-image: url('../images/components/icon-radio-off.png');
-      background-size: 20px 20px;
+      background-size: rem(20px) rem(20px);
     }
     input:checked + label {
       background-image: url('../images/components/icon-radio-on.png');
@@ -64,57 +142,360 @@ $input-cover-height: 48px;
   }
   // 체크박스
   &.checkbox {
-    label {
-      min-height: 20px;
-      line-height: 20px;
-      padding-left: 22px;
-      background-image: url('../images/components/icon-checkbox-off.png');
-      background-size: 20px 20px;
+    &.round {
+      label {
+        min-height: rem(24px);
+        line-height: rem(24px);
+        padding-left: rem(30px);
+        background-image: url('../images/components/icon-checkbox-round-off.png');
+        background-size: rem(24px) rem(24px);
+        @media (max-width: $mo-l) {
+          font-size: 15px;
+        }
+      }
+      input:checked + label {
+        background-image: url('../images/components/icon-checkbox-round-on.png');
+      }
     }
-    input:checked + label {
-      background-image: url('../images/components/icon-checkbox-on.png');
+    &.square {
+      label {
+        min-height: rem(18px);
+        line-height: rem(18px);
+        padding-left: rem(25px);
+        background-image: url('../images/components/icon-checkbox-square-bk-off.png');
+        background-size: rem(18px) rem(18px);
+      }
+      input:checked + label {
+        background-image: url('../images/components/icon-checkbox-square-bk-on.png');
+      }
     }
   }
 }
 
+.form-guide-text {
+  display: block;
+  font-weight: 300;
+  margin-top: rem(12px);
+  font-size: rem(15px);
+  + .form-guide-text {
+    margin-top: rem(4px);
+  }
+  @media (max-width: $mo-l) {
+    font-size: 13px;
+  }
+}
+
 // 셀렉트박스
-.select-box {
+.selectric-container {
   position: relative;
-  select {
-    width: 100%;
-    padding: 13px 24px 13px 11px;
-    font-size: 15px;
-    border: 1px solid #ddd;
-    -moz-appearance: none; /* Firefox */
-    -webkit-appearance: none; /* Safari and Chrome */
-    appearance: none;
-    @include box-sizing();
-    option {
-      font-size: 15px;
-      color: #000;
-      background-color: #fff;
-    }
-    &.selected {
-      background-color: #000;
-      border-color: #000;
-      color: #fff;
-      + .arrow {
-        transform: rotate(180deg);
-        background-image: url('../images/components/icon-select-arrow-w.png');
+  .required {
+    display: inline-block;
+    margin-left: rem(6px);
+    font-weight: 700;
+    font-size: rem(16px);
+    color: $primary;
+  }
+  .selectric-open {
+    .selectric {
+      .button {
+        overflow: hidden;
+        &:after {
+          transform: rotate(180deg);
+        }
       }
     }
   }
-  .arrow {
-    display: block;
-    width: 10px;
-    height: 7px;
+  &.active {
+    .select-label {
+      transform: translate3d(0, -20px, 0) scale(0.8);
+    }
+  }
+  .select-label {
     position: absolute;
-    top: 50%;
-    right: 11px;
-    margin-top: -3px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-image: url('../images/components/icon-select-arrow-bk.png');
-    background-size: 10px 7px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: left top;
+    font-size: rem(16px);
+    color: #666;
+    @include ellipsis;
+  }
+  .selectric-wrapper {
+    position: relative;
+    z-index: 2;
+    &.selectric-open {
+      z-index: 100;
+    }
+  }
+  .selectric-medium {
+    &.selectric-first-show {
+      .selectric-scroll {
+        li {
+          &:first-child {
+            display: block;
+          }
+        }
+      }
+    }
+    &.selectric-disabled {
+      opacity: 1;
+      .button {
+        display: none;
+      }
+      .label {
+        color: #999 !important;
+      }
+    }
+    .selectric {
+      border: 0;
+      border-bottom: 1px solid #dedede;
+      background-color: #fff;
+      .button {
+        background-color: #fff;
+        text-indent: -9999px;
+        &:after {
+          width: 13px;
+          height: 8px;
+          border: 0;
+          background-repeat: no-repeat;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url('../images/components/icon-arrow-12x8.png');
+          @media (max-width: $mo-l) {
+            width: 10px;
+            height: 6px;
+          }
+        }
+      }
+      .label {
+        height: rem(41px);
+        line-height: rem(41px);
+        margin: 0 0 rem(6px) 0;
+        font-size: rem(16px);
+        color: #000;
+        @media (max-width: $mo-l) {
+          font-size: 14px;
+        }
+      }
+    }
+    .selectric-items {
+      max-height: rem(225px);
+      overflow: auto;
+      margin-top: rem(7px);
+      border-radius: 5px;
+      border: 0;
+      background-color: #fff;
+      box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.15);
+      li {
+        padding: rem(18px) rem(32px);
+        font-weight: 300;
+        font-size: rem(16px);
+        @media (max-width: $mo-l) {
+          padding: 12px 16px;
+          font-size: 13px;
+        }
+        &:hover,
+        &.selected {
+          background-color: #eee;
+          color: $primary;
+        }
+      }
+    }
+    .selectric-scroll {
+      li {
+        &:first-child {
+          display: none;
+        }
+      }
+    }
+    &.selectric-open {
+      .label {
+        .required {
+          color: $warning;
+        }
+      }
+    }
+  }
+  .selectric-small {
+    .selectric {
+      height: rem(30px);
+      line-height: rem(30px);
+      border: 0;
+      background-color: #fff;
+      .label {
+        height: rem(30px);
+        line-height: rem(30px);
+        margin-right: rem(33px);
+        font-size: rem(15px);
+      }
+      .button {
+        width: rem(30px);
+        height: rem(30px);
+        line-height: rem(30px);
+        background-color: #fff;
+        text-indent: -9999px;
+        &:after {
+          width: 100%;
+          height: 100%;
+          border: 0;
+          background-size: 12px 7px;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-image: url('../images/icon-arrow-bk-12x7.png');
+          @media (max-width: $mo-l) {
+            width: 10px;
+            height: 6px;
+          }
+        }
+      }
+    }
+    .selectric-items {
+      margin-top: rem(5px);
+      border-radius: 5px;
+      box-shadow: none;
+      border: 1px solid #eee;
+      background-color: #fff;
+      li {
+        padding: rem(10px);
+        font-size: rem(14px);
+        &:hover,
+        &.selected {
+          background-color: #eee;
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+.icon-more-og,
+.icon-more-bl {
+  display: inline-block;
+  width: rem(29px);
+  height: rem(24px);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+}
+.icon-more-og {
+  background-image: url('../images/icon-more-arrow-og.png');
+}
+.icon-more-bl {
+  background-image: url('../images/icon-more-arrow-bl.png');
+}
+
+.keyword-select-item {
+  position: relative;
+  label {
+    display: inline-block;
+    padding: rem(12px) rem(20px);
+    font-size: rem(16px);
+    letter-spacing: rem(-0.5px);
+    border: 1px solid $orange;
+    color: $orange;
+    border-radius: 50px;
+    cursor: pointer;
+    @media (max-width: $mo-l) {
+      padding: 6px 15px;
+      font-size: 14px;
+    }
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    @include blind;
+    &:checked {
+      + label {
+        background-color: $orange;
+        color: #fff;
+      }
+    }
+  }
+  &.gray {
+    label {
+      border-color: #b2b2b2;
+      color: #b2b2b2;
+    }
+    input[type='checkbox'],
+    input[type='radio'] {
+      &:checked {
+        + label {
+          background-color: #b2b2b2;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.icon-bookmark,
+.icon-share {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+  text-indent: -9999px;
+}
+.icon-share {
+  @include size(15px, 17px);
+  background-image: url('../images/icon-share.png');
+}
+.icon-bookmark {
+  @include size(15px, 16px);
+  background-image: url('../images/icon-bookmark.png');
+  &.on {
+    background-image: url('../images/icon-bookmark-on.png');
+  }
+}
+.icon-square-close {
+  display: block;
+  @include size(rem(42px));
+  text-indent: -9999px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+  background-image: url('../images/icon-close-square-42x42.png');
+}
+// 파일업로드
+.file-upload-container {
+  .image-upload-result {
+    margin-bottom: rem(20px);
+  }
+
+  .file-wrapper {
+    position: relative;
+    input {
+      @include blind;
+    }
+    label {
+      cursor: pointer;
+    }
+  }
+  .file-upload {
+    &.with-input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: rem(4px);
+      border-bottom: 1px solid #ddd;
+      .file-wrapper {
+        flex-shrink: 0;
+      }
+    }
+    .result-file-input {
+      width: 100%;
+      border: 0;
+      height: rem(30px);
+      line-height: rem(30px);
+      padding-right: rem(10px);
+      font-weight: 300;
+      font-size: rem(18px);
+      box-sizing: border-box;
+      @media (max-width: $mo-l) {
+        font-size: 16px;
+      }
+    }
   }
 }

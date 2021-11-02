@@ -1,8 +1,18 @@
 // 기본 셋팅
 $body-base-font: 'NotoSansKR', arial, sans-serif, Arial, dotum, '돋움';
 $body-font-color: #000;
-$base-font-size: 30px;
+$base-font-size: 20px;
 $line-height: 1.5;
 
 // base color
-$point-color1: #ffcc13;
+$primary: #2546cd;
+$warning: #ff9582;
+$slightly: #888;
+$danger: #e0012b;
+$orange: #ff4f2e;
+
+// 미디어쿼리 사이즈
+$tb-l: 1320px;
+$tb-s: 1100px;
+$mo-l: 720px;
+$mo-s: 360px;

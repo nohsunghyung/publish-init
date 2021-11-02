@@ -1,11 +1,24 @@
 $(document).ready(function () {
+  // 팝업 핸들러
   layerPopupHandler();
-  // mobileMenuHandler();
-  // scrollHeader();
-  // slider();
+  // 셀렉트박스
+  selectric();
+  // 모바일메뉴 핸들러
+  mobileMenuHandler();
+  // 헤더 스크롤감지
+  scrollHeader();
+  // 슬라이드
+  sliderMaker();
+  // 아코디언 핸들러
+  accordionHandler();
+  // input active 핸들러
+  inputActiveHandler();
+  // 달력
+  datePicker();
+  // 숫자 카운팅
+  // new NumberCounter('countNumber');
 });
 
-// 팝업 핸들러
 function layerPopupHandler() {
   var layerPopup = $('.layer-popup');
   var popupContainer = layerPopup.find('.popup-container');
@@ -43,7 +56,6 @@ function closeLayerPopup(popupId) {
   $body.removeClass('scroll-disable');
 }
 
-// 모바일 메뉴 핸들러
 function mobileMenuHandler() {
   var $moblieNavBtn = $('.mobile-nav-btn');
   var $header = $('#header');
@@ -71,11 +83,10 @@ function mobileMenuHandler() {
 function scorllMoveTo(id) {
   if (id) {
     var offset = $('#' + id).offset().top;
-    $('html, body').animate({ scrollTop: offset }, 300);
+    $('html, body').animate({scrollTop: offset}, 300);
   }
 }
 
-// 헤더 스크롤 감지
 function scrollHeader() {
   var $header = $('#header');
   var $win = $(window);
@@ -94,15 +105,212 @@ function scrollHeader() {
   }
 }
 
-// 슬라이드
-function slider() {
-  var slider = $('.popup-slider-container');
+function sliderMaker() {
+  var popupSlider = $('.member-slider');
 
-  slider.slick({
+  sliderInit(popupSlider, {
     infinite: true,
-    slidesToShow: 1,
+    centerMode: true,
     dots: false,
-    arrows: false,
-    adaptiveHeight: true
+    arrows: true,
+    variableWidth: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnFocus: false,
+    pauseOnDotsHover: false,
+    appendArrows: '.member-slider-container .arrows',
   });
 }
+
+// 슬라이드 생성
+function sliderInit(element, option) {
+  if (!element.length) return;
+
+  $(element).slick(option);
+}
+
+function selectric() {
+  var $selectric = $('.selectric');
+  if (!$selectric.length) return;
+  $selectric.selectric({
+    nativeOnMobile: false,
+    onInit: function (event, selectric) {
+      // 필수항목일경우
+      if ($(this).hasClass('required') && !selectric.element.value) {
+        selectric.elements.label.append('<span class="required">*</span>');
+      }
+      // float 라벨 있을경우
+      if ($(this).hasClass('float')) {
+        if ($(this)[0].value) {
+          $(this).closest('.selectric-container').addClass('active');
+        }
+      }
+    },
+    onChange: function () {
+      // float 라벨 있을경우
+      if ($(this).hasClass('float')) {
+        if ($(this)[0].value) {
+          $(this).closest('.selectric-container').addClass('active');
+        } else {
+          $(this).closest('.selectric-container').removeClass('active');
+        }
+      }
+    },
+    onOpen: function () {},
+    onClose: function () {},
+  });
+}
+
+function accordionHandler() {
+  var accordionHeader = $('.accordion-header');
+  if (!accordionHeader.length) return;
+  accordionHeader.on('click', function () {
+    var $this = $(this);
+    var speed = $this.parents('.main-info-container').length ? 400 : 200;
+    accordionFn($this, speed);
+  });
+}
+
+function accordionFn(el, speed) {
+  speed = speed ? speed : 200;
+  if (el.hasClass('solo')) {
+    el.parents('.accordion-list')
+      .toggleClass('active')
+      .find('.accordion-body')
+      .stop()
+      .slideToggle(speed);
+  } else {
+    el.parents('.accordion-list')
+      .toggleClass('active')
+      .find('.accordion-body')
+      .stop()
+      .slideToggle(speed)
+      .parent('.accordion-list')
+      .siblings('.accordion-list')
+      .removeClass('active')
+      .find('.accordion-body')
+      .slideUp(speed);
+  }
+}
+
+function inputActiveHandler() {
+  var $inputs = $('.input-active');
+  if (!$inputs.length) return;
+
+  $inputs.each(function () {
+    var $this = $(this);
+    if ($this.val().length) {
+      $this.closest('.input-cover').addClass('active');
+    }
+  });
+
+  $(document).on('focus change', '.input-active', function (e) {
+    var $this = $(this);
+    var $inputcover = $this.closest('.input-cover');
+    if (!$this.is('[readonly]')) {
+      $inputcover.addClass('focus');
+    }
+    $inputcover.addClass('active');
+  });
+
+  $(document).on('focusout change', '.input-active', function (e) {
+    var $this = $(this);
+    var $inputcover = $this.closest('.input-cover');
+    var setTimeHandle = setTimeout(function () {
+      if (!$this.hasClass('open-datepicker')) {
+        $inputcover.removeClass('focus');
+        clearTimeout(setTimeHandle);
+      }
+    }, 100);
+    if (!$this.val().length) {
+      if (!$this.hasClass('open-datepicker')) {
+        $inputcover.removeClass('active');
+      }
+    }
+  });
+}
+
+function datePicker() {
+  var $dateEl = $('.datepicker-input');
+  if (!$dateEl.length) return;
+  $dateEl.each(function () {
+    var $this = $(this);
+    if ($this.hasClass('month')) {
+      $this.monthpicker({
+        monthNames: [
+          '1월(JAN)',
+          '2월(FEB)',
+          '3월(MAR)',
+          '4월(APR)',
+          '5월(MAY)',
+          '6월(JUN)',
+          '7월(JUL)',
+          '8월(AUG)',
+          '9월(SEP)',
+          '10월(OCT)',
+          '11월(NOV)',
+          '12월(DEC)',
+        ],
+        monthNamesShort: [
+          '1월',
+          '2월',
+          '3월',
+          '4월',
+          '5월',
+          '6월',
+          '7월',
+          '8월',
+          '9월',
+          '10월',
+          '11월',
+          '12월',
+        ],
+        changeYear: true,
+        yearRange: '-60:+0',
+        dateFormat: 'yy-mm',
+      });
+    } else {
+      $this.datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-80:+10',
+        beforeShow: function () {
+          $(this).addClass('open-datepicker');
+        },
+        onClose: function () {
+          $(this).removeClass('open-datepicker');
+        },
+      });
+    }
+  });
+}
+
+function NumberCounter(target_frame, target_number) {
+  if (!$('#' + target_frame).length) return;
+  this.count = 0;
+  this.diff = 0;
+  this.target_frame = document.getElementById(target_frame);
+  this.target_count = this.target_frame.innerHTML;
+  this.timer = null;
+  this.counter();
+}
+NumberCounter.prototype.counter = function () {
+  var self = this;
+  this.diff = this.target_count - this.count;
+
+  if (this.diff > 0) {
+    self.count += Math.ceil(this.diff / 5);
+  }
+
+  this.target_frame.innerHTML = this.count
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  if (this.count < this.target_count) {
+    this.timer = setTimeout(function () {
+      self.counter();
+    }, 20);
+  } else {
+    clearTimeout(this.timer);
+  }
+};
