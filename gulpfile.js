@@ -17,16 +17,16 @@ const server = browserSync.create();
 const paths = {
   css: {
     src: './resources/scss/**/*.scss',
-    dest: './resources/css/'
+    dest: './resources/css/',
   },
   html: {
     src: './html-dev/**/**.html',
     watch: ['./html-dev/', './includes/'],
-    dest: './html'
+    dest: './html',
   },
   js: {
-    src: './html/*.html'
-  }
+    src: './html/*.html',
+  },
 };
 
 // scss 컴파일
@@ -38,7 +38,7 @@ function css_compile(bool) {
       sass
         .sync({
           outputStyle: 'compact',
-          sourcemap: bool
+          sourcemap: bool,
         })
         .on('error', sass.logError)
     )
@@ -62,7 +62,7 @@ function css_compile_build(done) {
 
 // css clean
 function css_clean() {
-  return gulp.src(paths.css.dest, { read: false }).pipe(clean());
+  return gulp.src(paths.css.dest, {read: false}).pipe(clean());
 }
 
 // html 컴파일
@@ -72,14 +72,14 @@ function html_compile() {
     .pipe(
       fileinclude({
         prefix: '@@',
-        basepath: '@file'
+        basepath: '@file',
       })
     )
     .pipe(
       pretty({
         indent_size: 2,
         indent_char: '	',
-        end_with_newlines: true
+        end_with_newlines: true,
       })
     )
     .pipe(gulp.dest(paths.html.dest));
@@ -93,7 +93,7 @@ function html_compile_dev(done) {
 
 // html clean
 function html_clean() {
-  return gulp.src(paths.html.dest, { read: false }).pipe(clean());
+  return gulp.src(paths.html.dest, {read: false}).pipe(clean());
 }
 
 // 새로고침
@@ -107,9 +107,9 @@ function serve(done) {
   server.init({
     port: 9000,
     files: ['html/*.{html}', 'resources/**/*.{css,js,img}'],
-    server: { baseDir: './' },
+    server: {baseDir: './'},
     startPath: 'html/index.html',
-    browser: 'chrome'
+    browser: 'chrome',
   });
   done();
 }
