@@ -15,6 +15,10 @@ $(document).ready(function () {
   inputActiveHandler();
   // 달력
   datePicker();
+  // 최상단버튼
+  floatBtnTop();
+  // 헤더 높이 감지 컨텐츠간격
+  contentSpaceFn();
   // 숫자 카운팅
   // new NumberCounter('countNumber');
 });
@@ -283,6 +287,26 @@ function datePicker() {
       });
     }
   });
+}
+
+function floatBtnTop() {
+  $('.float-btn-top').on('click', function () {
+    scorllMoveTo();
+  });
+}
+
+function contentSpaceFn() {
+  var $header = $('#header');
+  var $content = $('#content');
+  var setTimeHandler = null;
+  if (!$header.length) return;
+  if ($content.hasClass('space')) {
+    setTimeHandler = setTimeout(function () {
+      var _headerHeight = $header.outerHeight();
+      $content.css('paddingTop', _headerHeight);
+      clearTimeout(setTimeHandler);
+    }, 150);
+  }
 }
 
 function NumberCounter(target_frame, target_number) {
