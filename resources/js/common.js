@@ -27,14 +27,14 @@ function layerPopupHandler() {
 
   // 팝업닫기
   closeBtn.on('click', function () {
-    layerPopup.fadeOut(300);
+    layerPopup.removeClass('open');
     $body.removeClass('scroll-disable');
   });
 
   // dim 클릭시 팝업닫기
   layerPopup.on('click', function (e) {
     if (!$(e.target).closest(popupContainer).length) {
-      layerPopup.fadeOut(300);
+      layerPopup.removeClass('open');
       $body.removeClass('scroll-disable');
     }
   });
@@ -44,7 +44,7 @@ function layerPopupHandler() {
 function openLayerPopup(popupId) {
   var popupEl = $('#' + popupId);
   var $body = $('body');
-  popupEl.fadeIn(300);
+  popupEl.addClass('open');
   $body.addClass('scroll-disable');
 }
 
@@ -52,7 +52,7 @@ function openLayerPopup(popupId) {
 function closeLayerPopup(popupId) {
   var popupEl = $('#' + popupId);
   var $body = $('body');
-  popupEl.fadeOut(300);
+  popupEl.removeClass('open');
   $body.removeClass('scroll-disable');
 }
 

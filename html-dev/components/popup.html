@@ -15,17 +15,25 @@
 
   <body>
     <div id="container">
-      <button type="button" class="btn-open" onclick="openLayerPopup('layerPopup')">1.기본팝업(click)</button>
+      <button
+        type="button"
+        class="btn-open"
+        onclick="openLayerPopup('layerPopup')"
+      >
+        1.기본팝업(click)
+      </button>
     </div>
 
     <div class="layer-popup" id="layerPopup">
-      <div class="popup-wrapper">
-        <div class="cell">
-          <div class="popup-container large">
-            <div class="popup-content">
-              <button type="button" class="btn-close">닫기</button>
-              <div class="popup-body">팝업내용</div>
-            </div>
+      <div class="popup-container medium">
+        <div class="popup-content">
+          <button type="button" class="btn-close">닫기</button>
+          <div class="box" style="height: 500px"></div>
+        </div>
+        <div class="popup-footer">
+          <div class="btn-area half">
+            <button type="button" class="btn btn-close">취소</button>
+            <button type="button" class="btn btn-ok">완료</button>
           </div>
         </div>
       </div>

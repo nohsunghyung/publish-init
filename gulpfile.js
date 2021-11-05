@@ -10,6 +10,7 @@ var removeSourcemaps = require('gulp-remove-sourcemaps');
 var ifElse = require('gulp-if-else');
 var gulpIf = require('gulp-if');
 var fileinclude = require('gulp-file-include');
+var removeEmptyLines = require('gulp-remove-empty-lines');
 
 const server = browserSync.create();
 
@@ -75,6 +76,7 @@ function html_compile() {
         basepath: '@file',
       })
     )
+    .pipe(removeEmptyLines())
     .pipe(
       pretty({
         indent_size: 2,
@@ -105,7 +107,7 @@ function reload(done) {
 // 서버 셋팅
 function serve(done) {
   server.init({
-    port: 9000,
+    port: 9003,
     files: ['html/*.{html}', 'resources/**/*.{css,js,img}'],
     server: {baseDir: './'},
     startPath: 'html/index.html',
@@ -117,12 +119,25 @@ function serve(done) {
 // watch 감시
 var watch = () => {
   gulp.watch(paths.css.src, gulp.series(css_compile_dev, reload));
-  gulp.watch(paths.html.watch, gulp.series(html_compile_dev, reload)).on('change', server.reload);
+  gulp
+    .watch(paths.html.watch, gulp.series(html_compile_dev, reload))
+    .on('change', server.reload);
   gulp.watch(paths.js.src).on('change', server.reload);
 };
 
-var dev = gulp.series(html_clean, html_compile_dev, css_compile_dev, serve, watch);
-var build = gulp.series(html_clean, css_clean, html_compile_dev, css_compile_build);
+var dev = gulp.series(
+  html_clean,
+  html_compile_dev,
+  css_compile_dev,
+  serve,
+  watch
+);
+var build = gulp.series(
+  html_clean,
+  css_clean,
+  html_compile_dev,
+  css_compile_build
+);
 
 // 터미널 입력 명령어
 exports.dev = dev;

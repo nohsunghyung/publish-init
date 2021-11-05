@@ -25,8 +25,10 @@
 @import './components/_data-table';
 // pagination
 @import './components/_pagination';
-// layer-popup
-@import './components/_layer-popup';
+// layer-popup - 테이블형식
+// @import './components/_layer-popup';
+// layer-popup - flex형식
+@import './components/_layer-popup-new';
 
 // reset
 @import './reset';
