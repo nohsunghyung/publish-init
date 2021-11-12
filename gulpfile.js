@@ -23,7 +23,7 @@ const paths = {
   html: {
     src: './html-dev/**/**.html',
     watch: ['./html-dev/', './includes/'],
-    dest: './html',
+    dest: './html/',
   },
   js: {
     src: './html/*.html',
@@ -107,7 +107,7 @@ function reload(done) {
 // 서버 셋팅
 function serve(done) {
   server.init({
-    port: 9003,
+    port: 9000,
     files: ['html/*.{html}', 'resources/**/*.{css,js,img}'],
     server: {baseDir: './'},
     startPath: 'html/index.html',
@@ -120,7 +120,7 @@ function serve(done) {
 var watch = () => {
   gulp.watch(paths.css.src, gulp.series(css_compile_dev, reload));
   gulp
-    .watch(paths.html.watch, gulp.series(html_compile_dev, reload))
+    .watch(paths.html.watch, gulp.series(html_clean, html_compile_dev, reload))
     .on('change', server.reload);
   gulp.watch(paths.js.src).on('change', server.reload);
 };
