@@ -119,10 +119,15 @@ function serve(done) {
 // watch 감시
 var watch = () => {
   gulp.watch(paths.css.src, gulp.series(css_compile_dev, reload));
-  gulp
-    .watch(paths.html.watch, gulp.series(html_clean, html_compile_dev, reload))
-    .on('change', server.reload);
-  gulp.watch(paths.js.src).on('change', server.reload);
+  gulp.watch(
+    paths.html.watch,
+    gulp.series(html_clean, html_compile_dev, reload)
+  );
+  gulp.watch(paths.js.src, gulp.series(reload));
+  // gulp
+  //   .watch(paths.html.watch, gulp.series(html_clean, html_compile_dev, reload))
+  //   .on('change', server.reload);
+  // gulp.watch(paths.js.src).on('change', server.reload);
 };
 
 var dev = gulp.series(
