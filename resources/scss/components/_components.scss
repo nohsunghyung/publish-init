@@ -22,13 +22,13 @@ $input-cover-height: rem(48px);
     position: relative;
     @include box-sizing();
     &.active {
-      label {
+      .label {
         transform: translate3d(0, -27px, 0) scale(0.8);
       }
     }
     &.focus {
       border-color: $primary;
-      label {
+      .label {
         color: $primary;
       }
       input {
@@ -36,7 +36,7 @@ $input-cover-height: rem(48px);
         color: $primary;
       }
     }
-    label {
+    .label {
       position: absolute;
       top: rem(7px);
       left: 0;
@@ -78,7 +78,7 @@ $input-cover-height: rem(48px);
       font-size: 16px;
     }
   }
-  label {
+  .label {
     font-size: rem(16px);
     color: #666;
   }
@@ -496,6 +496,90 @@ $input-cover-height: rem(48px);
       @media (max-width: $mo-l) {
         font-size: 16px;
       }
+    }
+  }
+}
+// 달력
+.ui-datepicker {
+  padding: rem(10px) !important;
+  @media (max-width: $mo-l) {
+    width: 16em !important;
+  }
+  &.ui-widget.ui-widget-content {
+    margin-top: rem(10px);
+  }
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    .ui-icon {
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat !important;
+      background-position: 0 0 !important;
+      background-size: cover !important;
+    }
+  }
+  .ui-datepicker-prev {
+    .ui-icon {
+      background-image: url('../images/components/icon-arrow-prev-bk-32x32.png') !important;
+    }
+  }
+  .ui-datepicker-next {
+    .ui-icon {
+      background-image: url('../images/components/icon-arrow-next-bk-32x32.png') !important;
+    }
+  }
+  .ui-widget-header {
+    background-color: #fff;
+    border: 0;
+  }
+  .ui-datepicker-title {
+    font-size: rem(12px);
+    select {
+      width: calc(45% - 10px) !important;
+      margin: 0 rem(5px) !important;
+      padding: rem(5px) rem(10px) !important;
+      border: 1px solid #ddd !important;
+      font-size: rem(14px) !important;
+    }
+  }
+  .ui-state-default {
+    border: 0 !important;
+    background-color: #fff !important;
+    text-align: center !important;
+    &.ui-state-active {
+      background-color: $primary !important;
+      border-color: transparent !important;
+      color: #fff !important;
+    }
+  }
+}
+
+// 평점선택
+.rating-select-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  input {
+    @include blind;
+  }
+  label {
+    transition: 0.1s;
+    display: block;
+    position: relative;
+    width: rem(46px);
+    height: rem(44px);
+    margin-left: rem(8px);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    background-image: url('../images/components/icon-star-empty.svg');
+    text-indent: -9999px;
+    cursor: pointer;
+    &.checked {
+      background-image: url('../images/components/icon-star-full.svg');
+    }
+    &:nth-of-type(1) {
+      margin-left: 0;
     }
   }
 }
