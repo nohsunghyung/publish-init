@@ -1,3 +1,5 @@
+$paging-size: 32px;
+
 .pagination {
   display: table;
   margin: 0 auto;
@@ -5,33 +7,29 @@
   button {
     display: block;
     float: left;
-    width: rem(30px);
-    height: rem(30px);
+    @include size(rem($paging-size));
   }
   .paging {
-    margin: 0 rem(3px);
-    border-radius: 50%;
+    margin: 0 rem(5px);
+    border-radius: 4px;
+    background-color: #fbfbfc;
     &.current {
-      background-color: #ffcc13;
+      background-color: $blue;
       color: #fff;
     }
   }
   .controller {
-    margin: 0 rem(3px);
+    @include size(rem($paging-size));
+    margin: 0 rem(6px);
     text-indent: -9999px;
     background-repeat: no-repeat;
-    background-size: cover;
-    &.prev-10 {
-      background-image: url('../images/components/icon-pagination-prev-10.png');
-    }
+    background-position: 50% 50%;
+    background-size: rem(22px) rem(6px);
     &.prev {
       background-image: url('../images/components/icon-pagination-prev.png');
     }
     &.next {
       background-image: url('../images/components/icon-pagination-next.png');
-    }
-    &.next-10 {
-      background-image: url('../images/components/icon-pagination-next-10.png');
     }
   }
 }
