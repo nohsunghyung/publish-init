@@ -19,6 +19,8 @@ $(document).ready(function () {
   floatBtnTop();
   // 헤더 높이 감지 컨텐츠간격
   contentSpaceFn();
+  // 평점 선택
+  reviewStar();
   // 숫자 카운팅
   // new NumberCounter('countNumber');
 });
@@ -307,6 +309,24 @@ function contentSpaceFn() {
       clearTimeout(setTimeHandler);
     }, 150);
   }
+}
+
+function reviewStar() {
+  var container = $('.rating-select-container');
+  var inputs = container.find('input[type="radio"]');
+  var labels = container.find('label');
+  inputs.on('change', function () {
+    if ($(this).prop('checked')) {
+      labels.each(function () {
+        $(this).removeClass('checked');
+      });
+      $(this)
+        .next('label')
+        .addClass('checked')
+        .prevAll('label')
+        .addClass('checked');
+    }
+  });
 }
 
 function NumberCounter(target_frame, target_number) {
