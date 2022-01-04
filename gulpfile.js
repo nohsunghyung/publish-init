@@ -107,11 +107,12 @@ function reload(done) {
 // 서버 셋팅
 function serve(done) {
   server.init({
-    port: 9000,
+    port: 9003,
     files: ['html/*.{html}', 'resources/**/*.{css,js,img}'],
     server: {baseDir: './'},
     startPath: 'html/index.html',
     browser: 'chrome',
+    reloadDelay: 800,
   });
   done();
 }
@@ -119,15 +120,11 @@ function serve(done) {
 // watch 감시
 var watch = () => {
   gulp.watch(paths.css.src, gulp.series(css_compile_dev, reload));
-  gulp.watch(
-    paths.html.watch,
-    gulp.series(html_clean, html_compile_dev, reload)
-  );
-  gulp.watch(paths.js.src, gulp.series(reload));
+  gulp.watch(paths.html.watch, gulp.series(html_compile_dev, reload));
+  gulp.watch(paths.js.src);
   // gulp
   //   .watch(paths.html.watch, gulp.series(html_clean, html_compile_dev, reload))
   //   .on('change', server.reload);
-  // gulp.watch(paths.js.src).on('change', server.reload);
 };
 
 var dev = gulp.series(

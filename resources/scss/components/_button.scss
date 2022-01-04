@@ -3,60 +3,37 @@
   display: inline-block;
   border: 1px solid #ddd;
   text-align: center;
+  cursor: pointer;
   &.small {
-    padding: rem(3px) rem(10px);
+    height: rem(35px);
+    line-height: rem(33px);
+    padding: 0 rem(10px);
     font-size: rem(13px);
   }
-  &.mediumSmall {
-    padding: rem(8px) rem(16px);
-    font-size: rem(14px);
-    line-height: rem(14px);
-  }
   &.medium {
-    border-radius: 4px;
     height: rem(47px);
     line-height: rem(45px);
-    padding: 0 rem(16px);
-    font-size: rem(14px);
-  }
-  &.mediumLarge {
-    padding: 0 rem(16px);
-    font-size: rem(18px);
-    height: rem(52px);
-    line-height: rem(50px);
+    padding: 0 rem(13px);
+    font-size: rem(15px);
   }
   &.large {
     height: rem(68px);
     line-height: rem(66px);
+    padding: 0 rem(16px);
     font-weight: 400;
     font-size: rem(20px);
-    border-radius: 4px;
-    letter-spacing: rem(-0.45px);
-    &.round {
-      height: rem(61px);
-      line-height: rem(61px);
-    }
   }
   &.xlarge {
     height: rem(88px);
     line-height: rem(86px);
+    padding: 0 rem(20px);
     font-weight: 700;
-    font-size: rem(20px);
-    border-radius: 4px;
-    letter-spacing: rem(-0.45px);
+    font-size: rem(22px);
   }
-  &.normal {
-    background-color: transparent;
-  }
-  &.keyword {
-    border: 0;
-    padding: rem(24px) rem(40px);
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    color: $orange;
-    font-size: rem(24px);
-    line-height: rem(24px);
-    font-weight: 300;
+  &.primary {
+    background-color: $primary;
+    border-color: $primary;
+    color: #fff;
   }
   &.slightly {
     background-color: #666;
@@ -68,145 +45,66 @@
     border-color: #989898;
     color: #fff;
   }
-  &.primary {
-    color: #fff;
-    background-color: $primary;
-    border-color: $primary;
-  }
   &.dark {
-    background-color: #222;
-    border-color: #222;
+    background-color: $dark;
+    border-color: $dark;
     color: #fff;
   }
   &.danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: $danger;
+    border-color: $danger;
     color: #fff;
   }
   &.warning {
-    background-color: $orange;
-    border-color: $orange;
+    background-color: $warning;
+    border-color: $warning;
     color: #fff;
   }
-  &.lightgray {
-    background-color: #ddd;
-    color: #000;
-  }
   &.round {
-    border-radius: 50px;
+    &.small {
+      border-radius: 50px;
+    }
+    &.medium {
+      border-radius: 40px;
+    }
+    &.large {
+      border-radius: 50px;
+    }
+    &.xlarge {
+      border-radius: 40px;
+    }
   }
   &.border {
-    border: 1px solid #211f22;
+    border: 1px solid $dark;
     &.primary {
-      color: #fff;
-      border-color: #2044ce;
-    }
-    &.warning {
-      border-color: $orange;
-      color: $orange;
+      color: $primary;
+      border-color: $primary;
       background-color: transparent;
     }
     &.slightly {
-      border-color: #ddd;
-      background-color: #fff;
-      color: #666;
+      border-color: $slightly;
+      color: $slightly;
+      background-color: transparent;
     }
-  }
-}
-
-.sns-btn-list {
-  width: rem(420px);
-  margin: 0 auto;
-  @media (max-width: $mo-l) {
-    width: 100%;
-  }
-  li {
-    margin-top: rem(10px);
-    &:nth-child(1) {
-      margin-top: 0;
-      .snsbtn {
-        background-color: #03cf5d;
-      }
-      .signup-sns-text {
-        color: #fff;
-      }
+    &.lightSlightly {
+      border-color: $lightSlightly;
+      color: $lightSlightly;
+      background-color: transparent;
     }
-    &:nth-child(2) {
-      .snsbtn {
-        background-color: #fee500;
-      }
-      // .signup-sns-text {
-      //   color: #fff;
-      // }
+    &.dark {
+      border-color: $dark;
+      color: $dark;
+      background-color: transparent;
     }
-    &.naver {
-      .snsbtn {
-        background-color: #03cf5d;
-      }
+    &.warning {
+      border-color: $warning;
+      color: $warning;
+      background-color: transparent;
     }
-    &.kakao {
-      .snsbtn {
-        background-color: #fee500;
-      }
-      .signup-sns-text {
-        color: #222;
-      }
-    }
-    // &:nth-child(3) {
-    //   .snsbtn {
-    //     background-color: #fee500;
-    //   }
-    // }
-    // &:nth-child(4) {
-    //   .snsbtn {
-    //     background-color: #eeeeee;
-    //   }
-    // }
-  }
-}
-// sns buttons
-.snsbtn {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-left: rem(165px);
-  border-radius: 4px;
-  text-align: center;
-  height: rem(64px);
-  font-size: rem(16px);
-  font-weight: 400;
-  line-height: rem(20px);
-  letter-spacing: rem(-0.5px);
-  color: #222;
-  @media (max-width: $tb-l) {
-    padding-left: 150px;
-  }
-  @media (max-width: $mo-l) {
-    padding-left: 120px;
-  }
-  .icon-sns {
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: rem(40px);
-    transform: translateY(-50%);
-    width: rem(25px);
-    height: rem(26px);
-    border-radius: 2px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    &.facebook {
-      background-image: url('../images/icon-sns-facebook.png');
-    }
-    &.naver {
-      background-image: url('../images/icon-sns-naver.png');
-    }
-    &.kakao {
-      background-image: url('../images/icon-sns-kakao.png');
-    }
-    &.googleplus {
-      background-image: url('../images/icon-sns-googleplus.png');
+    &.danger {
+      border-color: $danger;
+      color: $danger;
+      background-color: transparent;
     }
   }
 }

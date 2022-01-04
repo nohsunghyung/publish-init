@@ -18,40 +18,7 @@ $input-cover-height: rem(48px);
 
 // input
 .input-cover {
-  &.float {
-    position: relative;
-    @include box-sizing();
-    &.active {
-      label {
-        transform: translate3d(0, -27px, 0) scale(0.8);
-      }
-    }
-    &.focus {
-      border-color: $primary;
-      label {
-        color: $primary;
-      }
-      input {
-        border-color: $primary;
-        color: $primary;
-      }
-    }
-    label {
-      position: absolute;
-      top: rem(7px);
-      left: 0;
-      right: 0;
-      z-index: 1;
-      width: 100%;
-      transform: translate3d(0, 0, 0) scale(1);
-      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      transform-origin: left top;
-      font-size: rem(16px);
-      color: #666;
-      @include ellipsis;
-    }
-  }
-  input {
+  .form-input {
     display: block;
     position: relative;
     z-index: 2;
@@ -78,9 +45,40 @@ $input-cover-height: rem(48px);
       font-size: 16px;
     }
   }
-  label {
+  .form-label {
     font-size: rem(16px);
     color: #666;
+  }
+  &.float {
+    position: relative;
+    @include box-sizing();
+    &.active {
+      .form-label {
+        transform: translate3d(0, -27px, 0) scale(0.8);
+      }
+    }
+    &.focus {
+      border-color: $primary;
+      .form-label {
+        color: $primary;
+      }
+      .form-input {
+        border-color: $primary;
+        color: $primary;
+      }
+    }
+    .form-label {
+      position: absolute;
+      top: rem(7px);
+      left: 0;
+      right: 0;
+      z-index: 1;
+      width: 100%;
+      transform: translate3d(0, 0, 0) scale(1);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform-origin: left top;
+      @include ellipsis;
+    }
   }
   .required {
     display: inline-block;
@@ -90,6 +88,21 @@ $input-cover-height: rem(48px);
     font-weight: 700;
     font-size: rem(16px);
     color: $primary;
+  }
+  .file-wrapper {
+    position: relative;
+    .file-input {
+      @include blind;
+      top: 0;
+      right: 0;
+      z-index: 1;
+    }
+    .file-label {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
   }
 }
 
@@ -371,131 +384,43 @@ $input-cover-height: rem(48px);
     }
   }
 }
-.icon-more-og,
-.icon-more-bl {
-  display: inline-block;
-  width: rem(29px);
-  height: rem(24px);
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: cover;
-}
-.icon-more-og {
-  background-image: url('../images/icon-more-arrow-og.png');
-}
-.icon-more-bl {
-  background-image: url('../images/icon-more-arrow-bl.png');
-}
-
-.keyword-select-item {
-  position: relative;
-  label {
-    display: inline-block;
-    padding: rem(12px) rem(20px);
-    font-size: rem(16px);
-    letter-spacing: rem(-0.5px);
-    border: 1px solid $orange;
-    color: $orange;
-    border-radius: 50px;
-    cursor: pointer;
-    @media (max-width: $mo-l) {
-      padding: 6px 15px;
-      font-size: 14px;
-    }
-  }
-  input[type='checkbox'],
-  input[type='radio'] {
-    @include blind;
-    &:checked {
-      + label {
-        background-color: $orange;
-        color: #fff;
-      }
-    }
-  }
-  &.gray {
-    label {
-      border-color: #b2b2b2;
-      color: #b2b2b2;
-    }
-    input[type='checkbox'],
-    input[type='radio'] {
-      &:checked {
-        + label {
-          background-color: #b2b2b2;
-          color: #fff;
-        }
-      }
-    }
-  }
-}
-
-.icon-bookmark,
-.icon-share {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: cover;
-  text-indent: -9999px;
-}
-.icon-share {
-  @include size(15px, 17px);
-  background-image: url('../images/icon-share.png');
-}
-.icon-bookmark {
-  @include size(15px, 16px);
-  background-image: url('../images/icon-bookmark.png');
-  &.on {
-    background-image: url('../images/icon-bookmark-on.png');
-  }
-}
-.icon-square-close {
-  display: block;
-  @include size(rem(42px));
-  text-indent: -9999px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: cover;
-  background-image: url('../images/icon-close-square-42x42.png');
-}
 // 파일업로드
-.file-upload-container {
-  .image-upload-result {
-    margin-bottom: rem(20px);
-  }
-
-  .file-wrapper {
-    position: relative;
-    input {
-      @include blind;
-    }
-    label {
-      cursor: pointer;
-    }
-  }
-  .file-upload {
-    &.with-input {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: rem(4px);
-      border-bottom: 1px solid #ddd;
-      .file-wrapper {
-        flex-shrink: 0;
-      }
-    }
-    .result-file-input {
-      width: 100%;
-      border: 0;
-      height: rem(30px);
-      line-height: rem(30px);
-      padding-right: rem(10px);
-      font-weight: 300;
-      font-size: rem(18px);
-      box-sizing: border-box;
-      @media (max-width: $mo-l) {
-        font-size: 16px;
-      }
-    }
-  }
-}
+// .file-upload-container {
+//   .image-upload-result {
+//     margin-bottom: rem(20px);
+//   }
+//   .file-wrapper {
+//     position: relative;
+//     input {
+//       @include blind;
+//     }
+//     label {
+//       cursor: pointer;
+//     }
+//   }
+//   .file-upload {
+//     &.with-input {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//       padding-bottom: rem(4px);
+//       border-bottom: 1px solid #ddd;
+//       .file-wrapper {
+//         flex-shrink: 0;
+//       }
+//     }
+//     .result-file-input {
+//       width: 100%;
+//       border: 0;
+//       height: rem(30px);
+//       line-height: rem(30px);
+//       padding-right: rem(10px);
+//       font-weight: 300;
+//       font-size: rem(18px);
+//       box-sizing: border-box;
+//       @media (max-width: $mo-l) {
+//         font-size: 16px;
+//       }
+//     }
+//   }
+// }
