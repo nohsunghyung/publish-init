@@ -127,19 +127,8 @@ var watch = () => {
   //   .on('change', server.reload);
 };
 
-var dev = gulp.series(
-  html_clean,
-  html_compile_dev,
-  css_compile_dev,
-  serve,
-  watch
-);
-var build = gulp.series(
-  html_clean,
-  css_clean,
-  html_compile_dev,
-  css_compile_build
-);
+var dev = gulp.series(html_clean, html_compile_dev, css_compile_dev, serve, watch);
+var build = gulp.series(html_clean, css_clean, html_compile_dev, css_compile_build);
 
 // 터미널 입력 명령어
 exports.dev = dev;

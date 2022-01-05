@@ -41,7 +41,7 @@ $input-cover-height: rem(48px);
         color: #000 !important;
       }
     }
-    @media (max-width: $mo-l) {
+    @media (max-width: $mobile-large) {
       font-size: 16px;
     }
   }
@@ -194,7 +194,7 @@ $checkboxSize: 24px;
   + .form-guide-text {
     margin-top: rem(4px);
   }
-  @media (max-width: $mo-l) {
+  @media (max-width: $mobile-large) {
     font-size: 13px;
   }
 }
