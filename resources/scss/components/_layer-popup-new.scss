@@ -36,16 +36,12 @@
   }
   .popup-header {
     flex-shrink: 0;
-  }
-  .popup-content {
-    height: 100%;
-    overflow: auto;
     position: relative;
     background-color: #fff;
     .btn-close {
       position: absolute;
-      top: rem(32px);
-      right: rem(32px);
+      top: rem(20px);
+      right: rem(20px);
       z-index: 2;
       @include size(rem(40px));
       text-indent: -9999px;
@@ -54,6 +50,15 @@
       background-size: rem(23px) rem(23px);
       background-image: url('../images/icon/icon-close-bk-23x23.png');
     }
+  }
+  .popup-title {
+    text-align: center;
+  }
+  .popup-content {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    background-color: #fff;
   }
   .popup-inner {
     padding: rem(40px);
