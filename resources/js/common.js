@@ -112,27 +112,56 @@ function scrollHeader() {
 }
 
 function sliderMaker() {
-  var popupSlider = $('.member-slider');
-
-  sliderInit(popupSlider, {
-    infinite: true,
-    centerMode: true,
-    dots: false,
-    arrows: true,
-    variableWidth: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnFocus: false,
-    pauseOnDotsHover: false,
-    appendArrows: '.member-slider-container .arrows',
+  var exampleSlider = sliderInit('.slider-example', {
+    loop: false,
+    // slidesPerView: 2
+    // centeredSlides: true,
+    // spaceBetween: 30,
+    // freeMode: true,
+    // autoplay: {
+    //   delay: 1000,
+    //   disableOnInteraction: false,
+    //   pauseOnMouseEnter: false,
+    // },
+    // autoHeight: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      // 모바일에서 -> pc
+      360: {
+        slidesPerView: 2,
+      },
+      600: {
+        slidesPerView: 'auto',
+      },
+    },
   });
 }
+
+var sliderArr = [];
 
 // 슬라이드 생성
 function sliderInit(element, option) {
   if (!element.length) return;
 
-  $(element).slick(option);
+  var slider = new Swiper(element, option);
+  sliderArr.push(slider);
+  return slider;
+}
+
+// 슬라이드 update(새로고침)
+function sliderUpdate() {
+  if (sliderArr[0].length) {
+    $.each(sliderArr[0], function (i) {
+      sliderArr[0][i].update();
+    });
+  }
 }
 
 function selectric() {
@@ -180,11 +209,7 @@ function accordionHandler() {
 function accordionFn(el, speed) {
   speed = speed ? speed : 200;
   if (el.hasClass('solo')) {
-    el.parents('.accordion-list')
-      .toggleClass('active')
-      .find('.accordion-body')
-      .stop()
-      .slideToggle(speed);
+    el.parents('.accordion-list').toggleClass('active').find('.accordion-body').stop().slideToggle(speed);
   } else {
     el.parents('.accordion-list')
       .toggleClass('active')
@@ -243,34 +268,8 @@ function datePicker() {
     var $this = $(this);
     if ($this.hasClass('month')) {
       $this.monthpicker({
-        monthNames: [
-          '1월(JAN)',
-          '2월(FEB)',
-          '3월(MAR)',
-          '4월(APR)',
-          '5월(MAY)',
-          '6월(JUN)',
-          '7월(JUL)',
-          '8월(AUG)',
-          '9월(SEP)',
-          '10월(OCT)',
-          '11월(NOV)',
-          '12월(DEC)',
-        ],
-        monthNamesShort: [
-          '1월',
-          '2월',
-          '3월',
-          '4월',
-          '5월',
-          '6월',
-          '7월',
-          '8월',
-          '9월',
-          '10월',
-          '11월',
-          '12월',
-        ],
+        monthNames: ['1월(JAN)', '2월(FEB)', '3월(MAR)', '4월(APR)', '5월(MAY)', '6월(JUN)', '7월(JUL)', '8월(AUG)', '9월(SEP)', '10월(OCT)', '11월(NOV)', '12월(DEC)'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         changeYear: true,
         yearRange: '-60:+0',
         dateFormat: 'yy-mm',
@@ -320,11 +319,7 @@ function reviewStar() {
       labels.each(function () {
         $(this).removeClass('checked');
       });
-      $(this)
-        .next('label')
-        .addClass('checked')
-        .prevAll('label')
-        .addClass('checked');
+      $(this).next('label').addClass('checked').prevAll('label').addClass('checked');
     }
   });
 }
@@ -346,9 +341,7 @@ NumberCounter.prototype.counter = function () {
     self.count += Math.ceil(this.diff / 5);
   }
 
-  this.target_frame.innerHTML = this.count
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   if (this.count < this.target_count) {
     this.timer = setTimeout(function () {
@@ -358,3 +351,8 @@ NumberCounter.prototype.counter = function () {
     clearTimeout(this.timer);
   }
 };
+
+// js 함수 외부사용을 위함
+
+// 슬라이드 업데이트 - 비동기 작업후 실행
+window.sliderUpdate = sliderUpdate;
