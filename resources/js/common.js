@@ -164,24 +164,23 @@ function sliderUpdate() {
   }
 }
 
+var $selectric;
 function selectric() {
-  var $selectric = $('.selectric');
+  $selectric = $('.selectric');
   if (!$selectric.length) return;
   $selectric.selectric({
     nativeOnMobile: false,
     onInit: function (event, selectric) {
-      // 필수항목일경우
-      if ($(this).hasClass('required') && !selectric.element.value) {
-        selectric.elements.label.append('<span class="required">*</span>');
-      }
-      // float 라벨 있을경우
-      if ($(this).hasClass('float')) {
-        if ($(this)[0].value) {
-          $(this).closest('.selectric-container').addClass('active');
-        }
-      }
+      var $this = $(this);
+      initSelectric($this, selectric);
+    },
+    onRefresh: function (event, selectric) {
+      var $this = $(this);
+      initSelectric($this, selectric);
     },
     onChange: function () {
+      // 셀렉트릭 작동시 select박스 change 트리거
+      $(this).trigger('change');
       // float 라벨 있을경우
       if ($(this).hasClass('float')) {
         if ($(this)[0].value) {
@@ -194,6 +193,25 @@ function selectric() {
     onOpen: function () {},
     onClose: function () {},
   });
+
+  // 초기 셋팅 함수
+  function initSelectric(target, selectric) {
+    // 필수항목일경우
+    if (target.hasClass('required') && !target[0].value) {
+      selectric.elements.label.append('<span class="required">*</span>');
+    }
+    // float 라벨 있을경우
+    if (target.hasClass('float')) {
+      if (target[0].value) {
+        target.closest('.selectric-container').addClass('active');
+      }
+    }
+  }
+}
+
+// 셀렉트릭 새로고침
+function refreshSelectric() {
+  $selectric.selectric('refresh');
 }
 
 function accordionHandler() {
@@ -356,3 +374,7 @@ NumberCounter.prototype.counter = function () {
 
 // 슬라이드 업데이트 - 비동기 작업후 실행
 window.sliderUpdate = sliderUpdate;
+// 셀렉트릭 새로고침
+window.refreshSelectric = refreshSelectric;
+// 셀렉트릭 생성
+window.selectric = selectric;
