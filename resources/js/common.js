@@ -29,11 +29,11 @@ function layerPopupHandler() {
   var layerPopup = $('.layer-popup');
   var popupContainer = layerPopup.find('.popup-container');
   var closeBtn = layerPopup.find('.btn-close');
-  var $body = $('body');
+  var $body = $('html,body');
 
   // 팝업닫기
-  closeBtn.on('click', function () {
-    layerPopup.removeClass('open');
+  closeBtn.on('click', function (e) {
+    $(e.target).closest('.layer-popup').removeClass('open');
     $body.removeClass('scroll-disable');
   });
 
@@ -180,11 +180,7 @@ function accordionHandler() {
 function accordionFn(el, speed) {
   speed = speed ? speed : 200;
   if (el.hasClass('solo')) {
-    el.parents('.accordion-list')
-      .toggleClass('active')
-      .find('.accordion-body')
-      .stop()
-      .slideToggle(speed);
+    el.parents('.accordion-list').toggleClass('active').find('.accordion-body').stop().slideToggle(speed);
   } else {
     el.parents('.accordion-list')
       .toggleClass('active')
@@ -243,34 +239,8 @@ function datePicker() {
     var $this = $(this);
     if ($this.hasClass('month')) {
       $this.monthpicker({
-        monthNames: [
-          '1월(JAN)',
-          '2월(FEB)',
-          '3월(MAR)',
-          '4월(APR)',
-          '5월(MAY)',
-          '6월(JUN)',
-          '7월(JUL)',
-          '8월(AUG)',
-          '9월(SEP)',
-          '10월(OCT)',
-          '11월(NOV)',
-          '12월(DEC)',
-        ],
-        monthNamesShort: [
-          '1월',
-          '2월',
-          '3월',
-          '4월',
-          '5월',
-          '6월',
-          '7월',
-          '8월',
-          '9월',
-          '10월',
-          '11월',
-          '12월',
-        ],
+        monthNames: ['1월(JAN)', '2월(FEB)', '3월(MAR)', '4월(APR)', '5월(MAY)', '6월(JUN)', '7월(JUL)', '8월(AUG)', '9월(SEP)', '10월(OCT)', '11월(NOV)', '12월(DEC)'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         changeYear: true,
         yearRange: '-60:+0',
         dateFormat: 'yy-mm',
@@ -320,11 +290,7 @@ function reviewStar() {
       labels.each(function () {
         $(this).removeClass('checked');
       });
-      $(this)
-        .next('label')
-        .addClass('checked')
-        .prevAll('label')
-        .addClass('checked');
+      $(this).next('label').addClass('checked').prevAll('label').addClass('checked');
     }
   });
 }
@@ -346,9 +312,7 @@ NumberCounter.prototype.counter = function () {
     self.count += Math.ceil(this.diff / 5);
   }
 
-  this.target_frame.innerHTML = this.count
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   if (this.count < this.target_count) {
     this.timer = setTimeout(function () {

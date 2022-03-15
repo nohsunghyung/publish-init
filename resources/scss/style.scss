@@ -27,18 +27,21 @@
 // 셀렉트박스
 @import './components/_selectbox';
 // layer-popup - 테이블형식
-// @import './components/_layer-popup';
+// @import './components/_layer-popup-table';
 // layer-popup - flex형식
-@import './components/_layer-popup-new';
+@import './components/_layer-popup';
 
 // reset
-@import './reset';
+@import './_reset';
 
-// 공통 scss
-@import './page/common.scss';
+// 공통
+@import './views/_common';
 
-// 메인 scss
-@import './page/main.scss';
+// 메인
+@import './views/_main';
 
-// 서브 scss
-@import './page/sub.scss';
+// 회원가입, 로그인
+@import './views/_member';
+
+// 마이페이지
+@import './views/_mypage';

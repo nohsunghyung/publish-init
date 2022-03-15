@@ -31,12 +31,12 @@ button,
 select,
 pre {
   -webkit-text-size-adjust: none;
-  // font-size: $base-font-size;
   letter-spacing: -0.03em;
   line-height: $line-height;
   font-weight: 400;
   color: $body-font-color;
   font-family: $body-base-font;
+  font-size: $base-font-size;
   outline: none;
 }
 
