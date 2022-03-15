@@ -107,7 +107,7 @@ function reload(done) {
 // 서버 셋팅
 function serve(done) {
   server.init({
-    port: 9003,
+    port: 9000,
     files: ['html/*.{html}', 'resources/**/*.{css,js,img}'],
     server: {baseDir: './'},
     startPath: 'html/index.html',
