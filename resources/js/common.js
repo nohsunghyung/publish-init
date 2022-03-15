@@ -112,47 +112,75 @@ function scrollHeader() {
 }
 
 function sliderMaker() {
-  var popupSlider = $('.member-slider');
-
-  sliderInit(popupSlider, {
-    infinite: true,
-    centerMode: true,
-    dots: false,
-    arrows: true,
-    variableWidth: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnFocus: false,
-    pauseOnDotsHover: false,
-    appendArrows: '.member-slider-container .arrows',
+  var exampleSlider = sliderInit('.slider-example', {
+    loop: false,
+    // slidesPerView: 2
+    // centeredSlides: true,
+    // spaceBetween: 30,
+    // freeMode: true,
+    // autoplay: {
+    //   delay: 1000,
+    //   disableOnInteraction: false,
+    //   pauseOnMouseEnter: false,
+    // },
+    // autoHeight: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      // 모바일에서 -> pc
+      360: {
+        slidesPerView: 2,
+      },
+      600: {
+        slidesPerView: 'auto',
+      },
+    },
   });
 }
+
+var sliderArr = [];
 
 // 슬라이드 생성
 function sliderInit(element, option) {
   if (!element.length) return;
 
-  $(element).slick(option);
+  var slider = new Swiper(element, option);
+  sliderArr.push(slider);
+  return slider;
 }
 
+// 슬라이드 update(새로고침)
+function sliderUpdate() {
+  if (sliderArr[0].length) {
+    $.each(sliderArr[0], function (i) {
+      sliderArr[0][i].update();
+    });
+  }
+}
+
+var $selectric;
 function selectric() {
-  var $selectric = $('.selectric');
+  $selectric = $('.selectric');
   if (!$selectric.length) return;
   $selectric.selectric({
     nativeOnMobile: false,
     onInit: function (event, selectric) {
-      // 필수항목일경우
-      if ($(this).hasClass('required') && !selectric.element.value) {
-        selectric.elements.label.append('<span class="required">*</span>');
-      }
-      // float 라벨 있을경우
-      if ($(this).hasClass('float')) {
-        if ($(this)[0].value) {
-          $(this).closest('.selectric-container').addClass('active');
-        }
-      }
+      var $this = $(this);
+      initSelectric($this, selectric);
+    },
+    onRefresh: function (event, selectric) {
+      var $this = $(this);
+      initSelectric($this, selectric);
     },
     onChange: function () {
+      // 셀렉트릭 작동시 select박스 change 트리거
+      $(this).trigger('change');
       // float 라벨 있을경우
       if ($(this).hasClass('float')) {
         if ($(this)[0].value) {
@@ -165,6 +193,25 @@ function selectric() {
     onOpen: function () {},
     onClose: function () {},
   });
+
+  // 초기 셋팅 함수
+  function initSelectric(target, selectric) {
+    // 필수항목일경우
+    if (target.hasClass('required') && !target[0].value) {
+      selectric.elements.label.append('<span class="required">*</span>');
+    }
+    // float 라벨 있을경우
+    if (target.hasClass('float')) {
+      if (target[0].value) {
+        target.closest('.selectric-container').addClass('active');
+      }
+    }
+  }
+}
+
+// 셀렉트릭 새로고침
+function refreshSelectric() {
+  $selectric.selectric('refresh');
 }
 
 function accordionHandler() {
@@ -322,3 +369,12 @@ NumberCounter.prototype.counter = function () {
     clearTimeout(this.timer);
   }
 };
+
+// js 함수 외부사용을 위함
+
+// 슬라이드 업데이트 - 비동기 작업후 실행
+window.sliderUpdate = sliderUpdate;
+// 셀렉트릭 새로고침
+window.refreshSelectric = refreshSelectric;
+// 셀렉트릭 생성
+window.selectric = selectric;
