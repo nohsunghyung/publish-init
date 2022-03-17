@@ -1,10 +1,10 @@
 (function (exports) {
   var $window = $(window);
   var $document = $(document);
-  var $selectric; // 셀렉트릭
-  var sliderArr = []; // 슬라이드 배열
   var $body = $('body');
   var $header = $('#header');
+  var $selectric; // 셀렉트릭
+  var sliderArr = []; // 슬라이드 배열
 
   $document.ready(function () {
     $body = $('body');
