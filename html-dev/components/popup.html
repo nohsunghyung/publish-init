@@ -6,78 +6,39 @@
   <style>
     .btn-open {
       display: block;
-      margin: 20px;
+      margin: 10px;
       border-bottom: 1px solid #ddd;
-      font-size: 20px;
+      font-size: 15px;
       font-weight: bold;
     }
   </style>
 
   <body>
     <div id="container">
-      <button type="button" class="btn-open" onclick="layerPopup.openPopup('layerPopup1')">1.기본팝업(click)</button>
+      <div class="list-container">
+        <div class="list-item">
+          <div class="list-type">공통 팝업</div>
+          <div class="btn-item">
+            <button type="button" class="btn-open" onclick="layerPopup.openPopup('systemAlertPopup')">alert 팝업(click)</button>
+          </div>
+          <div class="btn-item">
+            <button type="button" class="btn-open" onclick="layerPopup.openPopup('systemConfirmPopup')">confirm 팝업(click)</button>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-type">메인 팝업</div>
+          <div class="btn-item">
+            <button type="button" class="btn-open" onclick="layerPopup.openPopup('layerPopup01')">메인(click)</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="layer-popup" id="layerPopup1">
-      <div class="popup-container medium">
-        <div class="popup-header">
-          <div class="popup-title">
-            <strong>팝업타이틀</strong>
-          </div>
-          <button type="button" class="btn-close popup-close">닫기</button>
-        </div>
-        <div class="popup-content">
-          <div class="popup-inner">
-            1번팝업
-            <button onclick="layerPopup.openPopup('layerPopup2')">두번째팝업</button>
-          </div>
-        </div>
-        <div class="popup-footer">
-          <div class="btn-area half">
-            <button type="button" class="btn btn-close popup-close">취소</button>
-            <button type="button" class="btn btn-ok">완료</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="layer-popup" id="layerPopup2">
-      <div class="popup-container medium">
-        <div class="popup-header">
-          <div class="popup-title">
-            <strong>팝업타이틀</strong>
-          </div>
-          <button type="button" class="btn-close popup-close">닫기</button>
-        </div>
-        <div class="popup-content">
-          <div class="popup-inner">222222</div>
-          <button onclick="layerPopup.openPopup('layerPopup3')">3번째팝업</button>
-        </div>
-        <div class="popup-footer">
-          <div class="btn-area half">
-            <button type="button" class="btn btn-close popup-close">취소</button>
-            <button type="button" class="btn btn-ok">완료</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="layer-popup" id="layerPopup3">
-      <div class="popup-container medium">
-        <div class="popup-header">
-          <div class="popup-title">
-            <strong>팝업타이틀</strong>
-          </div>
-          <button type="button" class="btn-close popup-close">닫기</button>
-        </div>
-        <div class="popup-content">
-          <div class="popup-inner">3번째팝업</div>
-        </div>
-        <div class="popup-footer">
-          <div class="btn-area half">
-            <button type="button" class="btn btn-close popup-close">취소</button>
-            <button type="button" class="btn btn-ok">완료</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- alert 팝업 -->
+    @@include('../../includes/popup/system-alert-popup.html')
+    <!-- confirm 팝업 -->
+    @@include('../../includes/popup/system-confirm-popup.html')
+    <!-- 메인 팝업 -->
+    @@include('../../includes/popup/main-popup.html')
   </body>
 </html>

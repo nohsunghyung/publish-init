@@ -1,10 +1,10 @@
 (function (exports) {
   var $window = $(window);
   var $document = $(document);
-  var $body = $('body');
-  var $header = $('#header');
   var $selectric; // 셀렉트릭
   var sliderArr = []; // 슬라이드 배열
+  var $body = $('body');
+  var $header = $('#header');
 
   $document.ready(function () {
     $body = $('body');
@@ -33,6 +33,9 @@
     // new NumberCounter('countNumber');
   });
 
+  // -------------------------------- 공통 함수 ------------------------------------//
+
+  // 팝업 컨트롤러
   var layerPopup = {
     popupArr: [],
     zIndex: 999,
@@ -399,6 +402,12 @@
       clearTimeout(this.timer);
     }
   };
+
+  // -------------------------------- 공통 함수 ------------------------------------//
+
+  // -------------------------------- ui 함수 --------------------------------------//
+
+  // -------------------------------- ui 함수 --------------------------------------//
 
   // js 함수 외부사용을 위함
 
