@@ -42,7 +42,7 @@ body {
 .ui-datepicker {
   width: 16em !important;
   padding: rem(10px) !important;
-  @media (max-width: $mobile-large) {
+  @media (max-width: $mo-l) {
     width: 15em !important;
   }
   &.ui-widget.ui-widget-content {

@@ -30,7 +30,7 @@
     margin: 0 auto;
     &.large {
       max-width: 996px;
-      @media (max-width: $tablet-large) {
+      @media (max-width: $tb-l) {
         min-width: 100%;
       }
     }
@@ -55,7 +55,7 @@
     background-position: 0 0;
     background-size: cover;
     background-image: url('../images/icon-close-23x23-w.png');
-    @media (max-width: $tablet-large) {
+    @media (max-width: $tb-l) {
       top: 20px;
       right: 20px;
       background-image: url('../images/icon-close-w-15x15.png');

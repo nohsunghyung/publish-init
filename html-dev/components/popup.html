@@ -4,6 +4,43 @@
     @@include('../../includes/resources.html')
   </head>
   <style>
+    #container {
+      width: 700px;
+      margin: 0 auto;
+    }
+    h1 {
+      margin: 20px 0;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .notice {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    .notice li {
+      font-size: 16px;
+    }
+    .list-type {
+      padding: 8px 20px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      background-color: #f1f1f1;
+    }
+    .list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-top: 1px solid #ddd;
+    }
+    .name {
+      padding-left: 20px;
+      font-weight: bold;
+      font-size: 15px;
+    }
     .btn-open {
       display: block;
       margin: 10px;
@@ -15,20 +52,32 @@
 
   <body>
     <div id="container">
+      <h1>팝업 모음</h1>
+      <div class="notice">
+        <ul>
+          <li>* 프로젝트의 모든 팝업을 확인할수 있는 페이지 입니다.</li>
+          <li>* 팝업 열기 함수 - <strong style="color: #d8027d">layerPopup.openPopup('팝업아이디')</strong></li>
+          <li>* 팝업 닫기 함수 - <strong style="color: #d8027d">layerPopup.closePopup('팝업아이디')</strong></li>
+          <li>* 전체 팝업 닫기 함수 - <strong style="color: #d8027d">layerPopup.closeAllPopup('팝업아이디')</strong></li>
+        </ul>
+      </div>
       <div class="list-container">
         <div class="list-item">
-          <div class="list-type">공통 팝업</div>
-          <div class="btn-item">
-            <button type="button" class="btn-open" onclick="layerPopup.openPopup('systemAlertPopup')">alert 팝업(click)</button>
+          <h2 class="list-type">공통 팝업</h2>
+          <div class="list-row">
+            <div class="name">alert 팝업</div>
+            <button type="button" class="btn small primary" onclick="layerPopup.openPopup('systemAlertPopup')">확인</button>
           </div>
-          <div class="btn-item">
-            <button type="button" class="btn-open" onclick="layerPopup.openPopup('systemConfirmPopup')">confirm 팝업(click)</button>
+          <div class="list-row">
+            <div class="name">confirm 팝업</div>
+            <button type="button" class="btn small primary" onclick="layerPopup.openPopup('systemConfirmPopup')">확인</button>
           </div>
         </div>
         <div class="list-item">
-          <div class="list-type">메인 팝업</div>
-          <div class="btn-item">
-            <button type="button" class="btn-open" onclick="layerPopup.openPopup('layerPopup01')">메인(click)</button>
+          <h2 class="list-type">메인 팝업</h2>
+          <div class="list-row">
+            <div class="name">메인 팝업</div>
+            <button type="button" class="btn small primary" onclick="layerPopup.openPopup('layerPopup01')">확인</button>
           </div>
         </div>
       </div>

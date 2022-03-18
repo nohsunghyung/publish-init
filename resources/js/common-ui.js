@@ -9,14 +9,13 @@
   $document.ready(function () {
     $body = $('body');
     $header = $('#header');
+    // -------------------------------- 공통 함수 실행 --------------------------------------//
     // 셀렉트박스
     selectric();
     // 모바일메뉴 핸들러
     mobileMenuHandler();
     // 헤더 스크롤감지
     scrollHeader();
-    // 슬라이드
-    sliderMaker();
     // 아코디언 핸들러
     accordionHandler();
     // input active 핸들러
@@ -28,12 +27,50 @@
     // 헤더 높이 감지 컨텐츠간격
     contentSpaceFn();
     // 평점 선택
-    reviewStar();
+    // reviewStar();
     // 숫자 카운팅
     // new NumberCounter('countNumber');
+    // -------------------------------- ui 함수 실행 --------------------------------------//
+    // 슬라이드
+    sliderMaker();
   });
 
-  // -------------------------------- 공통 함수 ------------------------------------//
+  // -------------------------------- ui 함수 --------------------------------------//
+  function sliderMaker() {
+    var exampleSlider = sliderInit('.slider-example', {
+      loop: false,
+      // slidesPerView: 2
+      // centeredSlides: true,
+      // spaceBetween: 30,
+      // freeMode: true,
+      // autoplay: {
+      //   delay: 1000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: false,
+      // },
+      // autoHeight: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        // 모바일에서 -> pc
+        360: {
+          slidesPerView: 2,
+        },
+        600: {
+          slidesPerView: 'auto',
+        },
+      },
+    });
+  }
+  // -------------------------------- ui 함수 --------------------------------------//
+
+  // -------------------------------- 공통 함수(공통함수의 수정이 필요한 경우 공유 후 작업) ------------------------------------//
 
   // 팝업 컨트롤러
   var layerPopup = {
@@ -77,6 +114,19 @@
             _.closeAllPopup();
           }
         });
+      }
+
+      // ie에서 max-height값 안먹는거 처리
+      var agent = navigator.userAgent.toLowerCase();
+
+      if ((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || agent.indexOf('msie') != -1) {
+        var popupSpace = parseInt($popupEl.css('padding-top')) + parseInt($popupEl.css('padding-bottom'));
+        var popupContainerHeight = $popupEl.find('.popup-container').outerHeight() + popupSpace + 2;
+        var winH = $window.height();
+        console.log(111);
+        if (popupContainerHeight >= winH) {
+          $popupEl.find('.popup-container').css('height', '100%');
+        }
       }
     },
     // 특정 팝업 닫기
@@ -148,42 +198,10 @@
     }
   }
 
-  function sliderMaker() {
-    var exampleSlider = sliderInit('.slider-example', {
-      loop: false,
-      // slidesPerView: 2
-      // centeredSlides: true,
-      // spaceBetween: 30,
-      // freeMode: true,
-      // autoplay: {
-      //   delay: 1000,
-      //   disableOnInteraction: false,
-      //   pauseOnMouseEnter: false,
-      // },
-      // autoHeight: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        // 모바일에서 -> pc
-        360: {
-          slidesPerView: 2,
-        },
-        600: {
-          slidesPerView: 'auto',
-        },
-      },
-    });
-  }
-
   // 슬라이드 생성
   function sliderInit(element, option) {
-    if (!element.length) return;
+    if (!$(element).length) return;
+    console.log(element);
 
     var slider = new Swiper(element, option);
     sliderArr.push(slider);
@@ -253,7 +271,7 @@
     if (!accordionHeader.length) return;
     accordionHeader.on('click', function () {
       var $this = $(this);
-      var speed = $this.parents('.main-info-container').length ? 400 : 200;
+      var speed = 200;
       accordionFn($this, speed);
     });
   }
@@ -404,10 +422,6 @@
   };
 
   // -------------------------------- 공통 함수 ------------------------------------//
-
-  // -------------------------------- ui 함수 --------------------------------------//
-
-  // -------------------------------- ui 함수 --------------------------------------//
 
   // js 함수 외부사용을 위함
 
