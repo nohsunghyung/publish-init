@@ -25,7 +25,7 @@
     // 최상단버튼
     floatBtnTop();
     // 헤더 높이 감지 컨텐츠간격
-    contentSpaceFn();
+    // contentSpaceFn();
     // 평점 선택
     // reviewStar();
     // 숫자 카운팅

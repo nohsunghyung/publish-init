@@ -26,7 +26,7 @@
     }
     .component-part-title {
       display: inline-block;
-      margin: 45px 0;
+      margin: 30px 0 40px;
       padding: 5px 20px;
       border-radius: 5px;
       font-size: 20px;
@@ -165,9 +165,11 @@
         <h2 class="component-title">셀렉트박스</h2>
 
         <div class="component-content">
+          <h3 class="component-part-title">float 셀렉트박스</h3>
           <div class="selectric-container">
             <div class="select-label">근무지선택<span class="required">*</span></div>
-            <select name="select" class="selectric medium float required first-show">
+            <!-- first-show 클래스를 넣으면 첫번째 옵션이 보입니다. -->
+            <select name="select" class="selectric medium float required">
               <option value="">근무지선택</option>
               <option value="옵션1">옵션1</option>
               <option value="옵션2">옵션2</option>
@@ -186,6 +188,7 @@
       <div class="component-item">
         <h2 class="component-title">체크박스 / 라디오 박스</h2>
         <div class="component-content">
+          <h3 class="component-part-title">체크박스</h3>
           <div class="selector-wrapper">
             <div class="selector-cover checkbox round">
               <!-- id와 label의 for값이 같아야합니다 -->
@@ -205,7 +208,7 @@
               <label for="checkbox4">선택</label>
             </div>
           </div>
-
+          <h3 class="component-part-title">라디오박스</h3>
           <div class="selector-wrapper horizontal">
             <div class="selector-cover radio">
               <input type="radio" name="radio" id="radio1" />
