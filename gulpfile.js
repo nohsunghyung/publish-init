@@ -120,14 +120,11 @@ function serve(done) {
 // watch 감시
 var watch = () => {
   gulp.watch(paths.css.src, gulp.series(css_compile_dev, reload));
-  gulp.watch(paths.html.watch, gulp.series(html_compile_dev, reload));
+  gulp.watch(paths.html.watch, gulp.series(html_clean, html_compile_dev, reload));
   gulp.watch(paths.js.src);
-  // gulp
-  //   .watch(paths.html.watch, gulp.series(html_clean, html_compile_dev, reload))
-  //   .on('change', server.reload);
 };
 
-var dev = gulp.series(html_clean, html_compile_dev, css_compile_dev, serve, watch);
+var dev = gulp.series(html_compile_dev, css_compile_dev, serve, watch);
 var build = gulp.series(html_clean, css_clean, html_compile_dev, css_compile_build);
 
 // 터미널 입력 명령어
