@@ -32,18 +32,13 @@
 // @import './components/_layer-popup-table';
 // layer-popup - flex형식
 @import './components/_layer-popup';
+// 애니메이션
+@import './components/_animation';
 
 // reset
 @import './_reset';
 
 // 공통
 @import './views/_common';
-
 // 메인
 @import './views/_main';
-
-// 회원가입, 로그인
-@import './views/_member';
-
-// 마이페이지
-@import './views/_mypage';
