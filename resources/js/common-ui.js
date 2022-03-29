@@ -24,6 +24,8 @@
     datePicker();
     // 최상단버튼
     floatBtnTop();
+    // 스크롤 애니메이션
+    scrollAnimation();
     // 헤더 높이 감지 컨텐츠간격
     // contentSpaceFn();
     // 평점 선택
@@ -364,6 +366,37 @@
     $('.float-btn-top').on('click', function () {
       scorllMoveTo();
     });
+  }
+
+  function scrollAnimation() {
+    var $element = $('.scroll-animate');
+    if (!$element.length) return;
+    $element.each(function (i) {
+      var $this = $(this);
+      var delay = $this.attr('data-delay');
+      if (delay) {
+        $this.css('animation-delay', delay + 's');
+      }
+      var setTimeHandler = setTimeout(function () {
+        animationFn($this);
+        clearTimeout(setTimeHandler);
+      }, 400);
+      $(window).on('scroll', function () {
+        animationFn($this);
+      });
+    });
+
+    function animationFn(element) {
+      var _offset = element.offset().top;
+      var _sct = $(window).scrollTop();
+      var _windowHeight = $(window).height();
+
+      if (_sct + _windowHeight / 1.2 >= _offset) {
+        var animationName = element.attr('data-animation') || 'fade-in-bottom';
+
+        element.addClass(animationName);
+      }
+    }
   }
 
   function contentSpaceFn() {
