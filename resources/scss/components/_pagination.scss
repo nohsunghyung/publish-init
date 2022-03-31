@@ -12,6 +12,7 @@ $paging-size: 32px;
   .paging {
     margin: 0 rem(5px);
     border-radius: 4px;
+    font-size: rem(14px);
     background-color: #fbfbfc;
     &.current {
       background-color: $blue;

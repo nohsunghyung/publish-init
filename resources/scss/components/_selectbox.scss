@@ -1,6 +1,40 @@
 // selectric 셀렉트박스
 .selectric-container {
   position: relative;
+  &.active {
+    .select-label {
+      transform: translate3d(0, -20px, 0) scale(0.8);
+    }
+  }
+  .selectric-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+  .selectric {
+    border: 0;
+    border-bottom: 1px solid #dedede;
+    background-color: #fff;
+    .button {
+      width: rem(30px);
+      height: rem(30px);
+      line-height: rem(30px);
+      text-indent: -9999px;
+      background-color: #fff;
+      &:after {
+        width: rem(13px);
+        height: rem(8px);
+        border: 0;
+        @include _background('components/icon-selectbox-arrow.svg');
+        @media (max-width: $mo-l) {
+          width: 10px;
+          height: 6px;
+        }
+      }
+    }
+    .label {
+      margin: 0 0 rem(6px) 0;
+    }
+  }
   .required {
     display: inline-block;
     margin-left: rem(6px);
@@ -10,18 +44,33 @@
     vertical-align: middle;
   }
   .selectric-open {
-    .selectric {
-      .button {
-        overflow: hidden;
-        &:after {
-          transform: rotate(180deg);
+    z-index: 100;
+    .button {
+      overflow: hidden;
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+    .label {
+      .required {
+        color: $warning;
+      }
+    }
+  }
+  .selectric-first-show {
+    .selectric-scroll {
+      li {
+        &:first-child {
+          display: block;
         }
       }
     }
   }
-  &.active {
-    .select-label {
-      transform: translate3d(0, -20px, 0) scale(0.8);
+  .selectric-scroll {
+    li {
+      &:first-child {
+        display: none;
+      }
     }
   }
   .select-label {
@@ -38,146 +87,63 @@
     color: #666;
     @include ellipsis;
   }
-  .selectric-wrapper {
-    position: relative;
-    z-index: 2;
-    &.selectric-open {
-      z-index: 100;
-    }
-    &.selectric-first-show {
-      .selectric-scroll {
-        li {
-          &:first-child {
-            display: block;
-          }
-        }
+  .selectric-items {
+    max-height: rem(225px);
+    overflow: auto;
+    margin-top: rem(7px);
+    border-radius: 5px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.15);
+    li {
+      &.selected {
+        background-color: $primary !important;
+        color: #fff !important;
       }
-    }
-    &.selectric-disabled {
-      opacity: 1;
-      .button {
-        display: none;
-      }
-      .label {
-        color: #999 !important;
-      }
-    }
-    .selectric {
-      border: 0;
-      background-color: #fff;
-      .button {
-        background-color: #fff;
-        text-indent: -9999px;
+      &:hover {
+        background-color: #f1f1f1;
+        color: $primary;
       }
     }
   }
   .selectric-medium {
-    .selectric {
-      border-bottom: 1px solid #dedede;
-      .label {
-        height: rem(41px);
-        line-height: rem(41px);
-        margin: 0 0 rem(6px) 0;
-        font-size: rem(16px);
-        color: #000;
-        @media (max-width: $mo-l) {
-          font-size: 14px;
-        }
-      }
-      .button {
-        &:after {
-          width: 13px;
-          height: 8px;
-          border: 0;
-          background-repeat: no-repeat;
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-image: url('../images/components/icon-arrow-12x8.png');
-          @media (max-width: $mo-l) {
-            width: 10px;
-            height: 6px;
-          }
-        }
+    .label {
+      height: rem(41px);
+      line-height: rem(41px);
+      font-size: rem(16px);
+      @media (max-width: $mo-l) {
+        font-size: rem(14px);
       }
     }
     .selectric-items {
-      max-height: rem(225px);
-      overflow: auto;
-      margin-top: rem(7px);
-      border-radius: 5px;
-      border: 0;
-      background-color: #fff;
-      box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.15);
       li {
-        padding: rem(18px) rem(32px);
+        padding: rem(18px) rem(20px);
         font-weight: 300;
         font-size: rem(16px);
         @media (max-width: $mo-l) {
-          padding: 12px 16px;
-          font-size: 13px;
-        }
-        &:hover,
-        &.selected {
-          background-color: #eee;
-          color: $primary;
-        }
-      }
-    }
-    .selectric-scroll {
-      li {
-        &:first-child {
-          display: none;
-        }
-      }
-    }
-    &.selectric-open {
-      .label {
-        .required {
-          color: $warning;
+          padding: rem(12px) rem(16px);
+          font-size: rem(13px);
         }
       }
     }
   }
   .selectric-small {
-    .selectric {
-      .label {
-        height: rem(30px);
-        line-height: rem(30px);
-        margin-right: rem(33px);
-        font-size: rem(15px);
-      }
-      .button {
-        width: rem(30px);
-        height: rem(30px);
-        line-height: rem(30px);
-        &:after {
-          width: 100%;
-          height: 100%;
-          border: 0;
-          background-size: 12px 7px;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-          background-image: url('../images/components/icon-arrow-12x8.png');
-          @media (max-width: $mo-l) {
-            width: 10px;
-            height: 6px;
-          }
-        }
+    .label {
+      height: rem(30px);
+      line-height: rem(30px);
+      font-size: rem(14px);
+      @media (max-width: $mo-l) {
+        font-size: rem(12px);
       }
     }
     .selectric-items {
-      margin-top: rem(5px);
-      border-radius: 5px;
-      box-shadow: none;
-      border: 1px solid #eee;
-      background-color: #fff;
       li {
-        padding: rem(10px);
+        padding: rem(12px) rem(15px);
+        font-weight: 300;
         font-size: rem(14px);
-        &:hover,
-        &.selected {
-          background-color: #eee;
-          color: $primary;
+        @media (max-width: $mo-l) {
+          padding: rem(10px) rem(12px);
+          font-size: rem(12px);
         }
       }
     }

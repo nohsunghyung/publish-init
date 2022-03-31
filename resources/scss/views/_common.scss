@@ -1,15 +1,6 @@
 // 공통 scss
 
-// 아코디언
-.accordion-list {
-  .accordion-header {
-    cursor: pointer;
-  }
-  .accordion-body {
-    display: none;
-  }
-}
-
+// 스크롤바 css
 ::-webkit-scrollbar {
   width: 6px; /*스크롤바의 너비*/
 }
@@ -22,20 +13,6 @@
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #ddd; /*스크롤바 트랙 색상*/
-}
-
-// 메인 scss
-html,
-body {
-  -webkit-overflow-scrolling: touch;
-  &.scroll-disable {
-    overflow: hidden !important;
-    &.responsive-scroll {
-      @media (min-width: 961px) {
-        overflow: visible !important;
-      }
-    }
-  }
 }
 
 // 달력
@@ -95,7 +72,7 @@ body {
   }
 }
 
-// swiper
+// swiper 슬라이드
 .swiper-container {
   position: relative;
   overflow: hidden;
@@ -111,6 +88,7 @@ body {
     }
   }
   .swiper-button-next {
+    transform: rotate(180deg);
     background-image: url('../images/icon/icon-slider-arrow-next-bk-70x70.png');
   }
   .swiper-button-prev {
@@ -126,5 +104,29 @@ body {
     .swiper-pagination-bullet {
       display: block;
     }
+  }
+}
+
+// body, html 스크롤 막기
+html,
+body {
+  -webkit-overflow-scrolling: touch;
+  &.scroll-disable {
+    overflow: hidden !important;
+    &.responsive-scroll {
+      @media (min-width: 961px) {
+        overflow: visible !important;
+      }
+    }
+  }
+}
+
+// 아코디언
+.accordion-list {
+  .accordion-header {
+    cursor: pointer;
+  }
+  .accordion-body {
+    display: none;
   }
 }

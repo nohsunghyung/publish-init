@@ -125,7 +125,6 @@
         var popupSpace = parseInt($popupEl.css('padding-top')) + parseInt($popupEl.css('padding-bottom'));
         var popupContainerHeight = $popupEl.find('.popup-container').outerHeight() + popupSpace + 2;
         var winH = $window.height();
-        console.log(111);
         if (popupContainerHeight >= winH) {
           $popupEl.find('.popup-container').css('height', '100%');
         }
@@ -203,7 +202,6 @@
   // 슬라이드 생성
   function sliderInit(element, option) {
     if (!$(element).length) return;
-    console.log(element);
 
     var slider = new Swiper(element, option);
     sliderArr.push(slider);

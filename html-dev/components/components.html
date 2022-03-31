@@ -26,11 +26,11 @@
     }
     .component-part-title {
       display: inline-block;
-      margin: 30px 0 40px;
+      margin: 50px 0 30px;
       padding: 5px 20px;
       border-radius: 5px;
       font-size: 20px;
-      background-color: #666;
+      background-color: #2546cd;
       color: #fff;
     }
   </style>
@@ -165,6 +165,21 @@
         <h2 class="component-title">셀렉트박스</h2>
 
         <div class="component-content">
+          <h3 class="component-part-title">selectric - medium</h3>
+          <div class="selectric-container">
+            <select name="select" class="selectric medium">
+              <option value="">마감일 순</option>
+              <option value="옵션1">옵션1</option>
+              <option value="옵션2">옵션2</option>
+            </select>
+          </div>
+          <h3 class="component-part-title">selectric - small</h3>
+          <div class="selectric-container">
+            <select name="select" class="selectric small">
+              <option value="">마감일 순</option>
+              <option value="옵션1">옵션1</option>
+            </select>
+          </div>
           <h3 class="component-part-title">selectric - float</h3>
           <div class="selectric-container">
             <div class="select-label">근무지선택<span class="required">*</span></div>
@@ -176,11 +191,12 @@
             </select>
             <div class="form-guide-text font warning">※ 안내문구입니다.</div>
           </div>
-          <h3 class="component-part-title">selectric - 일반</h3>
+          <h3 class="component-part-title">selectric - disabled</h3>
           <div class="selectric-container">
-            <select name="select" class="selectric small">
+            <select name="select" class="selectric medium" disabled>
               <option value="">마감일 순</option>
               <option value="옵션1">옵션1</option>
+              <option value="옵션2">옵션2</option>
             </select>
           </div>
           <h3 class="component-part-title">일반 셀렉트박스</h3>
@@ -196,7 +212,7 @@
       <div class="component-item">
         <h2 class="component-title">체크박스 / 라디오 박스</h2>
         <div class="component-content">
-          <h3 class="component-part-title">체크박스</h3>
+          <h3 class="component-part-title">체크박스(세로)</h3>
           <div class="selector-wrapper">
             <div class="selector-cover checkbox round">
               <!-- id와 label의 for값이 같아야합니다 -->
@@ -216,8 +232,19 @@
               <label for="checkbox4">선택</label>
             </div>
           </div>
-          <h3 class="component-part-title">라디오박스</h3>
+          <h3 class="component-part-title">체크박스(가로)</h3>
           <div class="selector-wrapper horizontal">
+            <div class="selector-cover checkbox square">
+              <input type="checkbox" name="checkbox5" id="checkbox5" />
+              <label for="checkbox5">선택</label>
+            </div>
+            <div class="selector-cover checkbox square">
+              <input type="checkbox" name="checkbox6" id="checkbox6" />
+              <label for="checkbox6">선택</label>
+            </div>
+          </div>
+          <h3 class="component-part-title">라디오박스</h3>
+          <div class="selector-wrapper">
             <div class="selector-cover radio">
               <input type="radio" name="radio" id="radio1" />
               <label for="radio1">남자</label>
