@@ -1,4 +1,4 @@
-// 셀렉트박스
+// selectric 셀렉트박스
 .selectric-container {
   position: relative;
   .required {
@@ -7,6 +7,7 @@
     font-weight: 700;
     font-size: rem(16px);
     color: $primary;
+    vertical-align: middle;
   }
   .selectric-open {
     .selectric {
@@ -179,6 +180,41 @@
           color: $primary;
         }
       }
+    }
+  }
+}
+
+// 일반 셀렉트박스
+$selectbox-medium: 40px;
+.select-box-container {
+  .form-label {
+    display: block;
+    padding-bottom: rem(3px);
+    font-size: rem(16px);
+    .required {
+      display: inline-block;
+      margin-left: rem(3px);
+      font-weight: 700;
+      font-size: rem(16px);
+      color: $primary;
+      vertical-align: middle;
+    }
+  }
+  .form-select {
+    width: 100%;
+    height: rem($selectbox-medium);
+    line-height: rem($selectbox-medium);
+    padding-right: rem(20px);
+    border: 0;
+    border-bottom: 1px solid #dbdee5;
+    font-size: rem(16px);
+    color: #000;
+    @include _background('components/icon-selectbox-arrow.svg');
+    background-position: center right;
+    background-size: rem(10px) rem(10px);
+    appearance: none;
+    option {
+      font-size: rem(16px);
     }
   }
 }

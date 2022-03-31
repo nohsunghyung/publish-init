@@ -49,40 +49,8 @@ $input-cover-height: rem(48px);
     display: block;
     font-size: rem(16px);
     color: #666;
-    // transform: translate3d(0, 5px, 0) scale(0.8);
-    // transform-origin: left top;
   }
-  &.float {
-    position: relative;
-    @include box-sizing();
-    &.active {
-      .form-label {
-        transform: translate3d(0, -27px, 0) scale(0.8);
-      }
-    }
-    &.focus {
-      border-color: $primary;
-      .form-label {
-        color: $primary;
-      }
-      .form-input {
-        border-color: $primary;
-        color: $primary;
-      }
-    }
-    .form-label {
-      position: absolute;
-      top: rem(7px);
-      left: 0;
-      right: 0;
-      z-index: 1;
-      width: 100%;
-      transform: translate3d(0, 0, 0) scale(1);
-      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      transform-origin: left top;
-      @include ellipsis;
-    }
-  }
+
   .required {
     display: inline-block;
     vertical-align: top;
@@ -105,6 +73,37 @@ $input-cover-height: rem(48px);
       top: 0;
       right: 0;
       z-index: 2;
+    }
+  }
+  &.float {
+    position: relative;
+    @include box-sizing();
+    &.active {
+      .form-label {
+        transform: translate3d(0, -27px, 0) scale(0.8);
+      }
+    }
+    .form-label {
+      position: absolute;
+      top: rem(7px);
+      left: 0;
+      right: 0;
+      z-index: 1;
+      width: 100%;
+      transform: translate3d(0, 0, 0) scale(1);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform-origin: left top;
+      @include ellipsis;
+    }
+  }
+  &.focus {
+    border-color: $primary;
+    .form-label {
+      color: $primary;
+    }
+    .form-input {
+      border-color: $primary;
+      color: $primary;
     }
   }
 }
