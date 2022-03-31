@@ -458,10 +458,13 @@
 
   // 팝업함수
   exports.layerPopup = layerPopup;
-  // 슬라이드 업데이트 - 비동기 작업후 실행
+
+  // --- 비동기 실행후 재실행 함수 모음 -- //
+  // 슬라이드 업데이트
   exports.sliderUpdate = sliderUpdate;
   // 셀렉트릭 새로고침
   exports.refreshSelectric = refreshSelectric;
   // 셀렉트릭 생성
   exports.selectric = selectric;
+  // --- 비동기 실행후 재실행 함수 모음 -- //
 })(this);

@@ -4,6 +4,15 @@
     @@include('../../includes/resources.html', {path: 2})
   </head>
   <style>
+    .notice {
+      width: 800px;
+      margin: 0 auto 20px;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    .notice li {
+      font-size: 16px;
+    }
     h1 {
       display: block;
       padding: 25px 0;
@@ -38,6 +47,17 @@
   <body>
     <div id="container">
       <h1>컴포넌트 모음</h1>
+      <div class="notice">
+        <ul>
+          <li>* 프로젝트의 컴포넌트를 확인할수 있는 페이지 입니다.</li>
+          <li>
+            * 비동기 작업후 라이브러리 재실행 함수 <br /><br />
+            <strong>슬라이드 업데이트</strong> - <strong style="color: #d8027d">window.sliderUpdate()</strong><br />
+            <strong>셀렉트릭 업데이트</strong> - <strong style="color: #d8027d">window.refreshSelectric()</strong><br />
+            <strong>셀렉트릭 생성</strong> - <strong style="color: #d8027d">window.selectric()</strong><br />
+          </li>
+        </ul>
+      </div>
       <div class="component-item">
         <h2 class="component-title">폰트</h2>
         <div class="component-content">
