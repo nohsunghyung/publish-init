@@ -267,9 +267,9 @@
   }
 
   function accordionHandler() {
-    var accordionHeader = $('.accordion-header');
-    if (!accordionHeader.length) return;
-    accordionHeader.on('click', function () {
+    var accordionContainer = $('.accordion-container');
+    if (!accordionContainer.length) return;
+    $('body').on('click', '.accordion-header', function () {
       var $this = $(this);
       var speed = 200;
       accordionFn($this, speed);
