@@ -130,3 +130,16 @@ body {
     display: none;
   }
 }
+
+// 모바일,pc 구분
+.mobile-show {
+  display: none;
+}
+@media (max-width: $mo-l) {
+  .pc-show {
+    display: none;
+  }
+  .mobile-show {
+    display: block;
+  }
+}
