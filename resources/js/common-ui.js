@@ -278,7 +278,8 @@
 
   function accordionFn(el, speed) {
     speed = speed ? speed : 200;
-    if (el.hasClass('solo')) {
+    // 컨테이너에 solo 클래스가 있으면 각각 토글됨
+    if (el.closest('.accordion-container').hasClass('solo')) {
       el.parents('.accordion-list').toggleClass('active').find('.accordion-body').stop().slideToggle(speed);
     } else {
       el.parents('.accordion-list')
