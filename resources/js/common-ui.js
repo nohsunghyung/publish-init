@@ -316,7 +316,7 @@
     $inputs.each(function () {
       var $this = $(this);
       var $inputcover = $this.closest('.input-cover');
-      if ($this.is('[readonly]')) {
+      if ($this.is('[readonly]') && !$this.hasClass('datepicker-input')) {
         $inputcover.removeClass('active');
         $inputcover.addClass('disable-active');
       } else {
@@ -334,6 +334,9 @@
         $inputcover.addClass('focus');
         $inputcover.addClass('active');
         $inputcover.removeClass('disable-active');
+      }
+      if ($this.hasClass('datepicker-input')) {
+        $inputcover.addClass('active');
       }
     });
 
