@@ -28,6 +28,8 @@
     scrollAnimation();
     // 탭 컨텐츠
     tabContentController();
+    // 글자수 표시 및 제한
+    // textLengthCheck();
     // 헤더 높이 감지 컨텐츠간격
     // contentSpaceFn();
     // 평점 선택
@@ -420,6 +422,26 @@
 
         element.addClass(animationName);
       }
+    }
+  }
+
+  function textLengthCheck() {
+    var $textareaCover = $('.textarea-cover');
+    if (!$textareaCover.length) return;
+    var $textarea = $textareaCover.find('textarea');
+    $textarea.each(function () {
+      setTextCount($(this));
+    });
+    $textarea.on('keyup', function () {
+      setTextCount($(this));
+    });
+
+    function setTextCount(el) {
+      var _maxLength = el.attr('data-maxLength');
+      el.val(el.val().substr(0, _maxLength));
+      el.closest('.textarea-cover')
+        .find('.count')
+        .text(el.val().length + '/' + _maxLength);
     }
   }
 
