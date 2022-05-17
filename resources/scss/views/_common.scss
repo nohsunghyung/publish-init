@@ -27,6 +27,8 @@
   }
   .ui-datepicker-prev,
   .ui-datepicker-next {
+    transform: translateY(-50%) !important;
+    top: 50% !important;
     .ui-icon {
       width: 16px;
       height: 16px;

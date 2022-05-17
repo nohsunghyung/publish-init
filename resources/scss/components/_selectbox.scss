@@ -25,6 +25,7 @@
         height: rem(8px);
         border: 0;
         @include _background('components/icon-selectbox-arrow.svg');
+        background-size: cover;
         @media (max-width: $mo-l) {
           width: 10px;
           height: 6px;
@@ -33,6 +34,11 @@
     }
     .label {
       margin: 0 0 rem(6px) 0;
+    }
+  }
+  .selectric-above {
+    .selectric-items {
+      margin-bottom: rem(7px);
     }
   }
   .required {

@@ -75,6 +75,17 @@ $input-cover-height: rem(48px);
       z-index: 2;
     }
   }
+  &.disable-active {
+    .form-label {
+      margin-bottom: rem(10px);
+    }
+    &.float {
+      .form-label {
+        margin-bottom: 0;
+        transform: translate3d(0, -36px, 0);
+      }
+    }
+  }
   &.float {
     position: relative;
     @include box-sizing();
@@ -104,6 +115,29 @@ $input-cover-height: rem(48px);
     .form-input {
       border-color: $primary;
       color: $primary;
+    }
+  }
+  &.btn-with {
+    &.small {
+      .form-input {
+        padding-right: rem(97px);
+      }
+    }
+    &.large {
+      .form-input {
+        padding-right: rem(123px);
+      }
+    }
+    .btn {
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 2;
+      padding: 0 rem(16px);
+      text-align: center;
+      font-weight: 600;
+      font-size: 13px;
     }
   }
 }
@@ -195,5 +229,81 @@ $checkboxSize: 24px;
   }
   @media (max-width: $mo-l) {
     font-size: 13px;
+  }
+}
+
+// 스위치 아이콘
+.switch-container {
+  display: flex;
+  align-items: center;
+  .switch-icon {
+    width: rem(32px);
+    height: rem(18px);
+    position: relative;
+  }
+  .switch-text {
+    margin-left: rem(8px);
+    font-size: rem(15px);
+  }
+  .btn-on-off {
+    transition: 0.2s;
+    position: absolute;
+    top: 50%;
+    left: rem(3px);
+    transform: translateY(-50%);
+    display: inline-block;
+    width: rem(12px);
+    height: rem(12px);
+    border-radius: 50%;
+    background: #fff;
+    text-indent: -9999px;
+  }
+  .switch-input {
+    @include blind;
+    &:checked {
+      + .switch-label {
+        background: $primary;
+        .btn-on-off {
+          left: rem(17px);
+        }
+      }
+    }
+  }
+  .switch-label {
+    transition: 0.2s;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    @include size(100%);
+    background: #999;
+    border-radius: 50px;
+  }
+}
+
+// 별점선택
+.rating-select-container {
+  display: flex;
+  input {
+    @include blind;
+  }
+  label {
+    transition: 0.1s;
+    display: block;
+    position: relative;
+    width: rem(46px);
+    height: rem(44px);
+    margin-left: rem(8px);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    background-image: url('../images/components/icon-star-empty.svg');
+    text-indent: -9999px;
+    cursor: pointer;
+    &.checked {
+      background-image: url('../images/components/icon-star-full.svg');
+    }
+    &:nth-of-type(1) {
+      margin-left: 0;
+    }
   }
 }

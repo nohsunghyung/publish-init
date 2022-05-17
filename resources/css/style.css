@@ -49,6 +49,10 @@
 
 .input-cover .file-wrapper .file-label { position: absolute; top: 0; right: 0; z-index: 2; }
 
+.input-cover.disable-active .form-label { margin-bottom: 0.45455rem; }
+
+.input-cover.disable-active.float .form-label { margin-bottom: 0; -webkit-transform: translate3d(0, -36px, 0); transform: translate3d(0, -36px, 0); }
+
 .input-cover.float { position: relative; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .input-cover.float.active .form-label { -webkit-transform: translate3d(0, -27px, 0) scale(0.8); transform: translate3d(0, -27px, 0) scale(0.8); }
@@ -60,6 +64,12 @@
 .input-cover.focus .form-label { color: #2546cd; }
 
 .input-cover.focus .form-input { border-color: #2546cd; color: #2546cd; }
+
+.input-cover.btn-with.small .form-input { padding-right: 4.40909rem; }
+
+.input-cover.btn-with.large .form-input { padding-right: 5.59091rem; }
+
+.input-cover.btn-with .btn { -webkit-transform: translateY(-50%); transform: translateY(-50%); position: absolute; top: 50%; right: 0; z-index: 2; padding: 0 0.72727rem; text-align: center; font-weight: 600; font-size: 13px; }
 
 .selector-wrapper .selector-cover + .selector-cover { margin-top: 0.45455rem; }
 
@@ -100,6 +110,36 @@
 .form-guide-text + .form-guide-text { margin-top: 0.18182rem; }
 
 @media (max-width: 720px) { .form-guide-text { font-size: 13px; } }
+
+.switch-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.switch-container .switch-icon { width: 1.45455rem; height: 0.81818rem; position: relative; }
+
+.switch-container .switch-text { margin-left: 0.36364rem; font-size: 0.68182rem; }
+
+.switch-container .btn-on-off { -webkit-transition: 0.2s; transition: 0.2s; position: absolute; top: 50%; left: 0.13636rem; -webkit-transform: translateY(-50%); transform: translateY(-50%); display: inline-block; width: 0.54545rem; height: 0.54545rem; border-radius: 50%; background: #fff; text-indent: -9999px; }
+
+.switch-container .switch-input { position: absolute !important; display: block; width: 0 !important; height: 0 !important; padding: 0 !important; margin: -1px !important; border: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; }
+
+.switch-container .switch-input.focusable:active, .switch-container .switch-input.focusable:focus { position: static; height: auto; width: auto; margin: 0; clip: auto; overflow: visible; }
+
+.switch-container .switch-input:checked + .switch-label { background: #2546cd; }
+
+.switch-container .switch-input:checked + .switch-label .btn-on-off { left: 0.77273rem; }
+
+.switch-container .switch-label { -webkit-transition: 0.2s; transition: 0.2s; display: block; position: relative; cursor: pointer; width: 100%; height: 100%; background: #999; border-radius: 50px; }
+
+.rating-select-container { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.rating-select-container input { position: absolute !important; display: block; width: 0 !important; height: 0 !important; padding: 0 !important; margin: -1px !important; border: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; }
+
+.rating-select-container input.focusable:active, .rating-select-container input.focusable:focus { position: static; height: auto; width: auto; margin: 0; clip: auto; overflow: visible; }
+
+.rating-select-container label { -webkit-transition: 0.1s; transition: 0.1s; display: block; position: relative; width: 2.09091rem; height: 2rem; margin-left: 0.36364rem; background-repeat: no-repeat; background-position: 0 0; background-size: cover; background-image: url("../images/components/icon-star-empty.svg"); text-indent: -9999px; cursor: pointer; }
+
+.rating-select-container label.checked { background-image: url("../images/components/icon-star-full.svg"); }
+
+.rating-select-container label:nth-of-type(1) { margin-left: 0; }
 
 .btn { display: inline-block; border: 1px solid #ddd; text-align: center; cursor: pointer; }
 
@@ -187,11 +227,13 @@
 
 .selectric-container .selectric .button { width: 1.36364rem; height: 1.36364rem; line-height: 1.36364rem; text-indent: -9999px; background-color: #fff; }
 
-.selectric-container .selectric .button:after { width: 0.59091rem; height: 0.36364rem; border: 0; background: url("../images/components/icon-selectbox-arrow.svg") no-repeat 0 0; }
+.selectric-container .selectric .button:after { width: 0.59091rem; height: 0.36364rem; border: 0; background: url("../images/components/icon-selectbox-arrow.svg") no-repeat 0 0; background-size: cover; }
 
 @media (max-width: 720px) { .selectric-container .selectric .button:after { width: 10px; height: 6px; } }
 
 .selectric-container .selectric .label { margin: 0 0 0.27273rem 0; }
+
+.selectric-container .selectric-above .selectric-items { margin-bottom: 0.31818rem; }
 
 .selectric-container .required { display: inline-block; margin-left: 0.27273rem; font-weight: 700; font-size: 0.72727rem; color: #2546cd; vertical-align: middle; }
 
@@ -438,6 +480,8 @@ button:focus { outline: none; }
 
 .ui-datepicker.ui-widget.ui-widget-content { margin-top: 0.45455rem; }
 
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { -webkit-transform: translateY(-50%) !important; transform: translateY(-50%) !important; top: 50% !important; }
+
 .ui-datepicker .ui-datepicker-prev .ui-icon, .ui-datepicker .ui-datepicker-next .ui-icon { width: 16px; height: 16px; background-repeat: no-repeat !important; background-position: 0 0 !important; background-size: cover !important; }
 
 .ui-datepicker .ui-datepicker-prev .ui-icon { background-image: url("../images/components/icon-arrow-prev-bk-32x32.png") !important; }
@@ -477,3 +521,8 @@ html.scroll-disable, body.scroll-disable { overflow: hidden !important; }
 .accordion-list .accordion-header { cursor: pointer; }
 
 .accordion-list .accordion-body { display: none; }
+
+.mobile-show { display: none; }
+
+@media (max-width: 720px) { .pc-show { display: none; }
+  .mobile-show { display: block; } }

@@ -28,14 +28,15 @@
     scrollAnimation();
     // 탭 컨텐츠
     tabContentController();
+    // 평점 선택
+    ratingSelectHandler();
     // 글자수 표시 및 제한
     // textLengthCheck();
     // 헤더 높이 감지 컨텐츠간격
     // contentSpaceFn();
-    // 평점 선택
-    // reviewStar();
     // 숫자 카운팅
     // new NumberCounter('countNumber');
+
     // ------------------------ ui 함수 실행 -----------------------------//
     // 슬라이드
     sliderMaker();
@@ -162,13 +163,13 @@
     var $moblieNavBtn = $('.mobile-nav-btn');
     var $dim = $('.gnb-dim');
     $moblieNavBtn.on('click', function () {
-      menuHandler();
+      mobileMenuFn();
     });
     $dim.on('click', function () {
-      menuHandler();
+      mobileMenuFn();
     });
 
-    function menuHandler() {
+    function mobileMenuFn() {
       if (!$header.hasClass('open')) {
         $header.addClass('open');
         $body.addClass('scroll-disable');
@@ -458,7 +459,7 @@
     }
   }
 
-  function reviewStar() {
+  function ratingSelectHandler() {
     var container = $('.rating-select-container');
     var inputs = container.find('input[type="radio"]');
     var labels = container.find('label');
