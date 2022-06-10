@@ -145,3 +145,11 @@ body {
     display: block;
   }
 }
+
+// 탭컨텐츠
+.ui-tab-content {
+  display: none;
+  &:nth-of-type(1) {
+    display: block;
+  }
+}
