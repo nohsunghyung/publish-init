@@ -457,7 +457,7 @@ legend { position: absolute !important; display: block; width: 0 !important; hei
 
 legend.focusable:active, legend.focusable:focus { position: static; height: auto; width: auto; margin: 0; clip: auto; overflow: visible; }
 
-img { border: 0px; vertical-align: top; }
+img { max-width: 100%; border: 0px; vertical-align: top; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 
