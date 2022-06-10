@@ -155,6 +155,7 @@
         _.popupArr[i].removeClass('open');
       }
       _.popupArr = [];
+      $body.removeClass('scroll-disable');
       $('.layer-popup-dim').removeClass('show');
     },
   };
