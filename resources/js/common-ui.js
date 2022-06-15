@@ -97,6 +97,11 @@
         zIndex: _.zIndex + _.popupArr.length,
       });
 
+      // 팝업 위에 팝업띄울때 dim처리
+      if (_.popupArr.length > 1) {
+        $popupEl.css('background-color', 'rgba(0,0,0,0.5)');
+      }
+
       // body 스크롤 막기
       $body.addClass('scroll-disable');
       if (!$('.layer-popup-dim').length) {
@@ -118,7 +123,7 @@
         $popupEl.off('click');
         $popupEl.on('click', function (e) {
           if (!$(e.target).closest($popupContainer).length) {
-            _.closeAllPopup();
+            _.closePopup();
           }
         });
       }
@@ -140,12 +145,12 @@
       var _ = this;
       var $popupEl = popupId ? $('#' + popupId) : _.popupArr[_.popupArr.length - 1];
       $popupEl.removeClass('open');
-      $body.removeClass('scroll-disable');
       _.popupArr = _.popupArr.filter(function (item) {
         return item.attr('id') !== $popupEl.attr('id');
       });
       if (_.popupArr.length === 0) {
         $('.layer-popup-dim').removeClass('show');
+        $body.removeClass('scroll-disable');
       }
     },
     // 모든 팝업 닫기
