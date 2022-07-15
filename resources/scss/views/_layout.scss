@@ -3,9 +3,15 @@
   width: rem(1200px);
   margin: 0 auto;
   @media (max-width: $layoutSize + 40px) {
+    width: auto;
+    padding: 0 rem(30px);
   }
 }
 
 // 헤더
+#header {
+}
 
 // 푸터
+#footer {
+}
