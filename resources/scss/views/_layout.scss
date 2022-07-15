@@ -1,0 +1,11 @@
+// 레이아웃 inner
+.section-inner {
+  width: rem(1200px);
+  margin: 0 auto;
+  @media (max-width: $layoutSize + 40px) {
+  }
+}
+
+// 헤더
+
+// 푸터
