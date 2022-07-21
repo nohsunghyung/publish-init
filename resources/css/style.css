@@ -199,15 +199,11 @@
 
 .data-table td { border-bottom: 1px solid #ddd; }
 
-.pagination { display: table; margin: 0 auto; }
+.pagination { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
 
-.pagination:before, .pagination:after { content: ""; display: table; }
+.pagination button { display: block; }
 
-.pagination:after { clear: both; }
-
-.pagination button { display: block; float: left; width: 1.45455rem; height: 1.45455rem; }
-
-.pagination .paging { margin: 0 0.22727rem; border-radius: 4px; font-size: 0.63636rem; background-color: #fbfbfc; }
+.pagination .paging { width: 1.45455rem; height: 1.45455rem; margin: 0 0.22727rem; border-radius: 4px; font-size: 0.63636rem; background-color: #fbfbfc; }
 
 .pagination .paging.current { background-color: #a0afc1; color: #fff; }
 

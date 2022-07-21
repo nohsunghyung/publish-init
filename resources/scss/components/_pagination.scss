@@ -1,15 +1,15 @@
 $paging-size: 32px;
+$btn-size: 32px;
 
 .pagination {
-  display: table;
-  margin: 0 auto;
-  @include cf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   button {
     display: block;
-    float: left;
-    @include size(rem($paging-size));
   }
   .paging {
+    @include size(rem($paging-size));
     margin: 0 rem(5px);
     border-radius: 4px;
     font-size: rem(14px);
@@ -20,7 +20,7 @@ $paging-size: 32px;
     }
   }
   .controller {
-    @include size(rem($paging-size));
+    @include size(rem($btn-size));
     margin: 0 rem(6px);
     text-indent: -9999px;
     background-repeat: no-repeat;
